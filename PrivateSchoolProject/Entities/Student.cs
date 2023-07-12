@@ -8,6 +8,7 @@ namespace PrivateSchoolProject
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int TuitionFees { get; set; }
+        public int Id { get; set; }
     }
 
 }

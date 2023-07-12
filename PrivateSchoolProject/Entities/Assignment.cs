@@ -9,6 +9,7 @@ namespace PrivateSchoolProject
         public DateTime SubDateTime { get; set; }
         public int OralMark { get; set; }
         public int TotalMark { get; set; }
+        public int Id { get; set; }
 
     }
 
