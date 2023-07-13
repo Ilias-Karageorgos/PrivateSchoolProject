@@ -11,6 +11,9 @@ namespace PrivateSchoolProject
         public int TotalMark { get; set; }
         public int Id { get; set; }
 
+        //Navigation Properties
+        public Course Course { get; set; }
+
     }
 
 }

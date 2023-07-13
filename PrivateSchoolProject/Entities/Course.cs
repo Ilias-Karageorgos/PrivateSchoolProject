@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PrivateSchoolProject
 {
@@ -11,7 +12,10 @@ namespace PrivateSchoolProject
         public int Id { get; set; }
         public CourseType Type { get; set; }
 
-
+        //Navigation Properties
+        public List<Assignment> Assignments { get; set; } = new List<Assignment>();
+        public List<Student> Students { get; set; } = new List<Student>();
+        public List<Trainer> Trainers { get; set; } = new List<Trainer>();
     }
 
 }
