@@ -1,5 +1,7 @@
 ﻿using System;
 using System.CodeDom;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,6 +13,8 @@ namespace PrivateSchoolProject
     {
         static void Main(string[] args)
         {
+
+            MyDataBase db = new MyDataBase();
             const int first = -50;
             const int second = -50;
             const int third = -50;
@@ -38,17 +42,123 @@ namespace PrivateSchoolProject
                 Console.WriteLine($"{"",first}{"19 - Students by Tuition Fees",second}{"",third}{"4gsdgsd",fourth}");
                 Console.WriteLine($"{"",first}{"20 - Students by DoB",second}{"",third}{"4gsdgsd",fourth}");
 
-
                 input = Console.ReadLine();
                 Console.Clear();
 
+                switch (input)
+                {
+                    case "1": View.Courses(db.Courses,"All Courses"); break;
+                    case "2": View.Trainers(db.Trainers,"All Trainers"); break;
+                    case "3": View.Students(db.Students, "All Students"); break;
+                    case "4": View.Assignments(db.Assignments, "All Assignments"); break;
+                    case "5": View.CourseTypes(db.Courses, "Course Types"); break;
+                    case "6": View.StudentsPerCourse(db.Courses, "All Students per Course"); break;
+                    case "7": View.Assignments(db.Assignments, "Trainers per Course"); break;
 
-            } while (input!="e" && input!="E");
 
-          
+                    default: Console.WriteLine("wrong choice"); break;
+                }
+
+            } while (input != "e" && input != "E");
         }
     }
 
+    public class View //class view gia na ftiaksoume tis methoudous Print pou tha kanei get o xristis apo to switch
+    {
+        public static void Courses(List<Course> courses, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor= ConsoleColor.Yellow;
+            Console.WriteLine($"{"Id",-8}{"Title",-15}{"Stream",-18}{"Type",-18}{"Start Date",-25}{"End Date",-20}");
+            Console.ResetColor();
+
+            foreach (var course in courses)
+            {
+                course.PrintCourses();
+            }            
+        }
+
+        public static void Trainers(List<Trainer> trainers, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"Id",-8}{"Firstname",-15}{"Lastname",-15}");
+            Console.ResetColor();
+
+            foreach (var trainer in trainers)
+            {
+                trainer.PrintTrainers();
+            }
+        }
+
+        internal static void Students(List<Student> students, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"Id",-10}{"Firstname",-25}{"Lastname",-25}{"Date of Birth",-25}{"Tuition Fees",-10}");
+            Console.ResetColor();
+
+            foreach (var student in students)
+            {
+                student.PrintStudents();
+            }
+
+        }
+
+        internal static void Assignments(List<Assignment> assignments, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"Id",-15}{"Title",-18}{"Description",-30}{"Sub Date",-25}{"Oral Mark",-14}{"Total Mark",-5}");
+            Console.ResetColor();
+
+            foreach (var assignment in assignments)
+            {
+                assignment.PrintAssignments();
+            }
+        }
+
+        internal static void CourseTypes(List<Course> courses, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"Course Title",-15}{"Course Type",-10}");
+            Console.ResetColor();
+
+            foreach(var course in courses)
+            {
+                course.PrintCourseTypes();
+            }
+
+
+        }
+
+        internal static void StudentsPerCourse(List<Course> courses, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"Course Title",-25}{"Lastname",-20}{"Firstname",-15}");
+            Console.ResetColor();
+
+            foreach (var course in courses)
+            {
+                course.PrintTitle();
+                foreach (var student in course.Students)
+                {                    
+                    student.PrintName();
+                }
+            }
+
+            
+
+        }
+    }
 }
 
 

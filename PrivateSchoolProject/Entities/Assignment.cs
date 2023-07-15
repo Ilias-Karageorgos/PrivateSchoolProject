@@ -14,6 +14,13 @@ namespace PrivateSchoolProject
         //Navigation Properties
         public Course Course { get; set; }
 
+        //Methods
+
+        public void PrintAssignments()
+        {
+            Console.WriteLine($"|{Id,-10}|{Title,-15}|{Description,-32}|{SubDateTime,-27}|{OralMark,-13}|{TotalMark,-5}|");
+        }
+
     }
 
 }

@@ -345,8 +345,8 @@ namespace PrivateSchoolProject
             Trainer t6 = new Trainer()
             {
                 Id = 6,
-                FirstName = "Vetoulis",
-                LastName = "Theodoros"
+                FirstName = "Theodoros",
+                LastName = "Vetoulis"
             };
             t6.Courses = new List<Course> { c2 };
             c2.Trainers.Add(t6);
