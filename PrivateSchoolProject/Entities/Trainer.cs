@@ -13,9 +13,13 @@ namespace PrivateSchoolProject
         public List<Course> Courses { get; set; } = new List<Course>();
 
         //Methods
-        public void PrintTrainers()
+        public void PrintTrainer()
         {
             Console.WriteLine($"|{Id,-5}|{FirstName,-15}|{LastName,-15}|");            
+        }
+        public void PrintTrainerName()
+        {
+            Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-15}|"); //epanalipsi kodika me students printname??
         }
 
     }

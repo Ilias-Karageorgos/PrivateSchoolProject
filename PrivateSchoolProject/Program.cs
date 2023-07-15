@@ -47,13 +47,13 @@ namespace PrivateSchoolProject
 
                 switch (input)
                 {
-                    case "1": View.Courses(db.Courses,"All Courses"); break;
-                    case "2": View.Trainers(db.Trainers,"All Trainers"); break;
-                    case "3": View.Students(db.Students, "All Students"); break;
-                    case "4": View.Assignments(db.Assignments, "All Assignments"); break;
-                    case "5": View.CourseTypes(db.Courses, "Course Types"); break;
-                    case "6": View.StudentsPerCourse(db.Courses, "All Students per Course"); break;
-                    case "7": View.Assignments(db.Assignments, "Trainers per Course"); break;
+                    case "1": View.Courses(db.Courses, $"{"",35}All Courses\n"); break;
+                    case "2": View.Trainers(db.Trainers, $"{"",15}All Trainers\n"); break;
+                    case "3": View.Students(db.Students, $"{"",35}All Students\n"); break;
+                    case "4": View.Assignments(db.Assignments, $"{"",40}All Assignments\n"); break;
+                    case "5": View.CourseTypes(db.Courses, $"{"",8}Course Types\n"); break;
+                    case "6": View.StudentsPerCourse(db.Courses, $"{"",15}All Students per Course\n"); break;
+                    case "7": View.TrainersPerCourse(db.Courses, $"{"",15}All Trainers per Course\n"); break;
 
 
                     default: Console.WriteLine("wrong choice"); break;
@@ -89,7 +89,7 @@ namespace PrivateSchoolProject
 
             foreach (var trainer in trainers)
             {
-                trainer.PrintTrainers();
+                trainer.PrintTrainer();
             }
         }
 
@@ -103,7 +103,7 @@ namespace PrivateSchoolProject
 
             foreach (var student in students)
             {
-                student.PrintStudents();
+                student.PrintStudent();
             }
 
         }
@@ -151,11 +151,27 @@ namespace PrivateSchoolProject
                 course.PrintTitle();
                 foreach (var student in course.Students)
                 {                    
-                    student.PrintName();
+                    student.PrintStudentName();
+                }
+            }          
+        }
+
+        internal static void TrainersPerCourse(List<Course> courses, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"Course Title",-25}{"Lastname",-20}{"Firstname",-15}\n");
+            Console.ResetColor();
+
+            foreach (var course in courses)
+            {
+                course.PrintTitle();
+                foreach (var trainer in course.Trainers)
+                {
+                    trainer.PrintTrainerName();
                 }
             }
-
-            
 
         }
     }

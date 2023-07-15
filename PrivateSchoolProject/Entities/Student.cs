@@ -15,14 +15,14 @@ namespace PrivateSchoolProject
         public List<Course> Courses { get; set; } = new List<Course>();
 
         //Methods
-        public void PrintStudents()
+        public void PrintStudent()
         {
             Console.WriteLine($"|{Id,-5}|{FirstName,-20}|{LastName,-25}|{DateOfBirth,-30}|{TuitionFees,-10}|");
         }
 
-        public void PrintName()
+        public void PrintStudentName()
         {
-            Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-15}|");
+            Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-15}|"); //epanalipsi kodika me trainers?
         }
     }
 

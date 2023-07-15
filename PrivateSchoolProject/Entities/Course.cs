@@ -26,10 +26,9 @@ namespace PrivateSchoolProject
         {
             Console.WriteLine($"|{Title,-15}|{Type,-10}|");
         }
-
         public void PrintTitle()
         {
-            Console.WriteLine($"|{Title,-25}\n");
+            Console.WriteLine($"|{Title,-10}|\n");
         }
     }
 
