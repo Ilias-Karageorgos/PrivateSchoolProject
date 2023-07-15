@@ -16,11 +16,14 @@ namespace PrivateSchoolProject
 
         //Methods
 
-        public void PrintAssignments()
+        public void PrintAssignment()
         {
-            Console.WriteLine($"|{Id,-10}|{Title,-15}|{Description,-32}|{SubDateTime,-27}|{OralMark,-13}|{TotalMark,-5}|");
+            Console.WriteLine($"|{Id,-10}|{Title,-15}|{Description,-32}|{SubDateTime.ToShortDateString(),-17}|{OralMark,-13}|{TotalMark,-5}|");
         }
 
+        public void PrintAssignmentTitleDisc()
+        {
+            Console.WriteLine($"{"",-20}|{Title,-25}|{Description,-35}|");
+        }
     }
-
 }

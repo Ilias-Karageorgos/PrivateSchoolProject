@@ -17,13 +17,13 @@ namespace PrivateSchoolProject
         //Methods
         public void PrintStudent()
         {
-            Console.WriteLine($"|{Id,-5}|{FirstName,-20}|{LastName,-25}|{DateOfBirth,-30}|{TuitionFees,-10}|");
+            Console.WriteLine($"|{Id,-5}|{FirstName,-20}|{LastName,-25}|{DateOfBirth.ToShortDateString(),-20}|{TuitionFees,-10}|");
         }
 
         public void PrintStudentName()
         {
             Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-15}|"); //epanalipsi kodika me trainers?
-        }
+        }    //edo na kano mia help classi gia na kanei print name se student kai Trainer
     }
 
 }

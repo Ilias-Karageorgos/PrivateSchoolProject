@@ -20,7 +20,7 @@ namespace PrivateSchoolProject
         //Methods, Behaviour
         public void PrintCourses()
         {
-            Console.WriteLine($"|{Id,-5}|{Title,-15}|{Stream,-15}|{Type,-15}|{StartDate,-25}|{EndDate,-20}|");
+            Console.WriteLine($"|{Id,-5}|{Title,-15}|{Stream,-15}|{Type,-15}|{StartDate.ToShortDateString(),-15}|{EndDate.ToShortDateString(),-10}|");
         }
         public void PrintCourseTypes()
         {

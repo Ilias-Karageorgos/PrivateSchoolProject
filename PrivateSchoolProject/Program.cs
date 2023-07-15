@@ -54,9 +54,10 @@ namespace PrivateSchoolProject
                     case "5": View.CourseTypes(db.Courses, $"{"",8}Course Types\n"); break;
                     case "6": View.StudentsPerCourse(db.Courses, $"{"",15}All Students per Course\n"); break;
                     case "7": View.TrainersPerCourse(db.Courses, $"{"",15}All Trainers per Course\n"); break;
+                    case "8": View.AssignmentsPerCourse(db.Courses, $"{"",15}All Assignments per Course\n"); break;
 
 
-                    default: Console.WriteLine("wrong choice"); break;
+                    default: Console.WriteLine("Wrong Choice"); break;
                 }
 
             } while (input != "e" && input != "E");
@@ -65,12 +66,14 @@ namespace PrivateSchoolProject
 
     public class View //class view gia na ftiaksoume tis methoudous Print pou tha kanei get o xristis apo to switch
     {
+        //epanalipsi???
+
         public static void Courses(List<Course> courses, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
             Console.ForegroundColor= ConsoleColor.Yellow;
-            Console.WriteLine($"{"Id",-8}{"Title",-15}{"Stream",-18}{"Type",-18}{"Start Date",-25}{"End Date",-20}");
+            Console.WriteLine($"{"Id",-8}{"Title",-15}{"Stream",-18}{"Type",-15}{"Start Date",-15}{"End Date",-15}");
             Console.ResetColor();
 
             foreach (var course in courses)
@@ -98,7 +101,7 @@ namespace PrivateSchoolProject
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{"Id",-10}{"Firstname",-25}{"Lastname",-25}{"Date of Birth",-25}{"Tuition Fees",-10}");
+            Console.WriteLine($"{"Id",-10}{"Firstname",-25}{"Lastname",-20}{"Date of Birth",-20}{"Tuition Fees",-10}");
             Console.ResetColor();
 
             foreach (var student in students)
@@ -113,12 +116,12 @@ namespace PrivateSchoolProject
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{"Id",-15}{"Title",-18}{"Description",-30}{"Sub Date",-25}{"Oral Mark",-14}{"Total Mark",-5}");
+            Console.WriteLine($"{"Id",-15}{"Title",-18}{"Description",-30}{"Sub Date",-15}{"Oral Mark",-14}{"Total Mark",-5}");
             Console.ResetColor();
 
             foreach (var assignment in assignments)
             {
-                assignment.PrintAssignments();
+                assignment.PrintAssignment();
             }
         }
 
@@ -173,6 +176,24 @@ namespace PrivateSchoolProject
                 }
             }
 
+        }
+
+        internal static void AssignmentsPerCourse(List<Course> courses, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"Course Title",-25}{"Title",-25}{"Description",-15}\n");
+            Console.ResetColor();
+
+            foreach (var course in courses)
+            {
+                course.PrintTitle();
+                foreach(var assignment in course.Assignments)
+                {
+                    assignment.PrintAssignmentTitleDisc();
+                }   
+            }
         }
     }
 }
