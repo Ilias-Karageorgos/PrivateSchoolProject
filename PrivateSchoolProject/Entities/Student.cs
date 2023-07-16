@@ -12,7 +12,7 @@ namespace PrivateSchoolProject
         public int Id { get; set; }
 
         //Navigation Properties
-        public List<Course> Courses { get; set; } = new List<Course>();
+        public List<Course> Courses { get; set; } = new List<Course>();        
 
         //Methods
         public void PrintStudent()
@@ -22,8 +22,10 @@ namespace PrivateSchoolProject
 
         public void PrintStudentName()
         {
-            Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-15}|"); //epanalipsi kodika me trainers?
+            Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-10}|"); //epanalipsi kodika me trainers?
         }    //edo na kano mia help classi gia na kanei print name se student kai Trainer
+
+
     }
 
 }

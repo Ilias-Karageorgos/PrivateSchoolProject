@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PrivateSchoolProject
 {
@@ -12,7 +13,7 @@ namespace PrivateSchoolProject
         public int Id { get; set; }
 
         //Navigation Properties
-        public Course Course { get; set; }
+        public Course Course { get; set; }        
 
         //Methods
 
@@ -25,5 +26,11 @@ namespace PrivateSchoolProject
         {
             Console.WriteLine($"{"",-20}|{Title,-25}|{Description,-35}|");
         }
+
+        public void PrintAssignmentTitle()
+        {
+            Console.WriteLine($"|{Title,-15}|");
+        }
+
     }
 }

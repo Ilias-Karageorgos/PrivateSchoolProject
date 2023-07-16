@@ -55,6 +55,18 @@ namespace PrivateSchoolProject
                     case "6": View.StudentsPerCourse(db.Courses, $"{"",15}All Students per Course\n"); break;
                     case "7": View.TrainersPerCourse(db.Courses, $"{"",15}All Trainers per Course\n"); break;
                     case "8": View.AssignmentsPerCourse(db.Courses, $"{"",15}All Assignments per Course\n"); break;
+                    case "9": View.AssignmentsPerStudent(db.Students, $"{"",15}All Assignments per Student\n"); break;
+                    case "10": View.Courses(db.Courses.OrderBy(x => x.Title).ToList(), $"{"",25}Courses Ordered by Title"); break;
+                    case "11": View.Courses(db.Courses.OrderBy(x => x.Type).ToList(), $"{"",25}Courses Ordered by Type"); break;
+                    case "12": View.Courses(db.Courses.OrderBy(x => x.Stream).ToList(), $"{"",25}Courses Ordered by Stream"); break;
+                    case "13": View.Courses(db.Courses.OrderBy(x => x.StartDate).ToList(), $"{"",25}Courses Ordered by StardDate"); break;
+                    case "14": View.Courses(db.Courses.OrderBy(x => x.EndDate).ToList(), $"{"",25}Courses Ordered by EndDate"); break;
+                    case "15": View.Trainers(db.Trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname"); break;
+                    case "16": View.Trainers(db.Trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname"); break;
+                    case "17": View.Students(db.Students.OrderBy(x => x.LastName).ToList(), $"{"",25}Students Ordered by Lastname"); break;
+                    case "18": View.Students(db.Students.OrderBy(x => x.FirstName).ToList(), $"{"",25}Students Ordered by Firstname"); break;
+                    case "19": View.Students(db.Students.OrderBy(x => x.TuitionFees).ToList(), $"{"",25}Students Ordered by Tuition Fees"); break;
+                    case "20": View.Students(db.Students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth"); break;
 
 
                     default: Console.WriteLine("Wrong Choice"); break;
@@ -72,14 +84,14 @@ namespace PrivateSchoolProject
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
-            Console.ForegroundColor= ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"{"Id",-8}{"Title",-15}{"Stream",-18}{"Type",-15}{"Start Date",-15}{"End Date",-15}");
             Console.ResetColor();
 
             foreach (var course in courses)
             {
                 course.PrintCourses();
-            }            
+            }
         }
 
         public static void Trainers(List<Trainer> trainers, string message)
@@ -133,7 +145,7 @@ namespace PrivateSchoolProject
             Console.WriteLine($"{"Course Title",-15}{"Course Type",-10}");
             Console.ResetColor();
 
-            foreach(var course in courses)
+            foreach (var course in courses)
             {
                 course.PrintCourseTypes();
             }
@@ -153,10 +165,10 @@ namespace PrivateSchoolProject
             {
                 course.PrintTitle();
                 foreach (var student in course.Students)
-                {                    
+                {
                     student.PrintStudentName();
                 }
-            }          
+            }
         }
 
         internal static void TrainersPerCourse(List<Course> courses, string message)
@@ -189,12 +201,38 @@ namespace PrivateSchoolProject
             foreach (var course in courses)
             {
                 course.PrintTitle();
-                foreach(var assignment in course.Assignments)
+                foreach (var assignment in course.Assignments)
                 {
                     assignment.PrintAssignmentTitleDisc();
-                }   
+                }
             }
         }
+
+        internal static void AssignmentsPerStudent(List<Student> students, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"\n{"Assignment Title",-22}{"Lastname",-20}{"Firstname",-10}\n");
+            Console.ResetColor();
+
+            foreach (var student in students)
+            {
+                student.PrintStudentName();
+
+                foreach (var course in student.Courses)
+                {
+                    foreach (var assignment in course.Assignments)
+                    {
+                        assignment.PrintAssignmentTitle();
+                    }
+                }
+            }
+        }
+
+
+
+
     }
 }
 

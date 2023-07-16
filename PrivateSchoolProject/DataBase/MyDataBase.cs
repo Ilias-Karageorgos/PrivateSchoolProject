@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace PrivateSchoolProject
 {
@@ -20,8 +21,8 @@ namespace PrivateSchoolProject
                 Id = 1,
                 Title = "Javascript",
                 Type = CourseType.PartTime,
-                StartDate = new DateTime(2024 / 01 / 09),
-                EndDate = new DateTime(2024 / 08 / 10),
+                StartDate = new DateTime(2024, 01, 15),
+                EndDate = new DateTime(2024, 06, 18),
                 Stream = "CB-8"
             };
             Course c2 = new Course()
@@ -29,8 +30,8 @@ namespace PrivateSchoolProject
                 Id = 2,
                 Title = "C#",
                 Type = CourseType.FullTime,
-                StartDate = new DateTime(2024 / 01 / 09),
-                EndDate = new DateTime(2024 / 08 / 10),
+                StartDate = new DateTime(2024, 02, 12),
+                EndDate = new DateTime(2024, 10, 15),
                 Stream = "CB-9"
 
             };
@@ -39,8 +40,8 @@ namespace PrivateSchoolProject
                 Id = 3,
                 Title = "Python",
                 Type = CourseType.FullTime,
-                StartDate = new DateTime(2024 / 01 / 09),
-                EndDate = new DateTime(2024 / 08 / 10),
+                StartDate = new DateTime(2024, 01, 09),
+                EndDate = new DateTime(2024, 09, 22),
                 Stream = "CB-10"
             };
 
@@ -56,7 +57,7 @@ namespace PrivateSchoolProject
                 DateOfBirth = new DateTime(2000, 04, 15),
                 TuitionFees = 5354
             };
-            s1.Courses = new List<Course>() { c1, c2 };
+            s1.Courses = new List<Course>() { c1, c2 };              
             c1.Students.Add(s1);
             c2.Students.Add(s1);
 
