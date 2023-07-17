@@ -30,10 +30,10 @@ namespace PrivateSchoolProject
                 Console.ResetColor();
 
                 Console.WriteLine($"{"-------------- ALL DATA --------------",first}{"-------------- ORDERED BY --------------",second}{"-------------- FILTER BY --------------",third}{"-------------- STATS --------------",fourth}");
-                Console.WriteLine($"{"1 - Courses",first}{"11 - Courses by Title",second}{"22 - Courses by Title",third}{"4fsdfsd",fourth}");
-                Console.WriteLine($"{"2 - Trainers",first}{"12 - Courses by Type",second}{"23 - Trainers by Firstname Or Lastname",third}{"4fsdsd",fourth}");
-                Console.WriteLine($"{"3 - Students",first}{"13 - Courses by Stream",second}{"24 - Students by Firstname Or Lastname",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"4 - Assignments",first}{"14 - Courses by StartDate",second}{"25 - Assignment by Title",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"1 - Courses",first}{"11 - Courses by Title",second}{"22 - Courses by Title",third}{"26 - Courses Count",fourth}");
+                Console.WriteLine($"{"2 - Trainers",first}{"12 - Courses by Type",second}{"23 - Trainers by Firstname Or Lastname",third}{"27 - Trainers Count",fourth}");
+                Console.WriteLine($"{"3 - Students",first}{"13 - Courses by Stream",second}{"24 - Students by Firstname Or Lastname",third}{"28 - Stundents Count",fourth}");
+                Console.WriteLine($"{"4 - Assignments",first}{"14 - Courses by StartDate",second}{"25 - Assignment by Title",third}{"29 - Assignments Count",fourth}");
                 Console.WriteLine($"{"5 - Course Types",first}{"15 - Courses by EndDate",second}{"",third}{"4gsdgsd",fourth}");
                 Console.WriteLine($"{"6 - Students per Course",first}{"16 - Trainers by Lastname",second}{"",third}{"4gsdgsd",fourth}");
                 Console.WriteLine($"{"7 - Trainers per Course",first}{"17 - Trainers by Firstname",second}{"",third}{"4gsdgsd",fourth}");
@@ -68,10 +68,14 @@ namespace PrivateSchoolProject
                     case "19": View.Students(db.Students.OrderBy(x => x.FirstName).ToList(), $"{"",25}Students Ordered by Firstname\n"); break;
                     case "20": View.Students(db.Students.OrderBy(x => x.TuitionFees).ToList(), $"{"",25}Students Ordered by Tuition Fees\n"); break;
                     case "21": View.Students(db.Students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth\n"); break;
-                    case "22": View.FilteredCoursesByTitle(db.Courses, $"{"",25}Filtered Courses by Title"); break;
-                    case "23": View.FilteredTrainersByFirstOrLastName(db.Trainers, $"{"",5}Filtered Trainers by Firstname or Lastname"); break;
-                    case "24": View.FilteredStudentsByFirstOrLastName(db.Students, $"{"",5}Filtered Students by Firstname or Lastname"); break;
-                    case "25": View.FilteredAssignmentsByTitle(db.Assignments, $"{"",25}Filtered Assignments by Title"); break;
+                    case "22": View.FilteredCoursesByTitle(db.Courses, $"{"",25}Filtered Courses by Title\n"); break;
+                    case "23": View.FilteredTrainersByFirstOrLastName(db.Trainers, $"{"",5}Filtered Trainers by Firstname or Lastname\n"); break;
+                    case "24": View.FilteredStudentsByFirstOrLastName(db.Students, $"{"",5}Filtered Students by Firstname or Lastname\n"); break;
+                    case "25": View.FilteredAssignmentsByTitle(db.Assignments, $"{"",25}Filtered Assignments by Title\n"); break;
+                    case "26": View.CoursesCount(db.Courses, $"{"",25}Courses Count\n"); break;
+                    case "27": View.TrainersCount(db.Trainers, $"{"",25}Trainers Count\n"); break;
+                    case "28": View.StudentsCount(db.Students, $"{"",25}Students Count\n"); break;
+                    case "29": View.AssignmentsCount(db.Assignments, $"{"",25}Assignments Count\n"); break;
 
                     default: Console.WriteLine("Wrong Choice"); break;
                 }
@@ -275,7 +279,7 @@ namespace PrivateSchoolProject
             }
         }
 
-        internal static void FilteredStudentsByFirstOrLastName(List<Student> students, string message)
+        public static void FilteredStudentsByFirstOrLastName(List<Student> students, string message)
         {
             Console.WriteLine("Give the Firstname");
             string criteriaFirstname = Console.ReadLine().ToLower();
@@ -298,7 +302,7 @@ namespace PrivateSchoolProject
             }
         }
 
-        internal static void FilteredAssignmentsByTitle(List<Assignment> assignments, string message)
+        public static void FilteredAssignmentsByTitle(List<Assignment> assignments, string message)
         {
             Console.WriteLine("Give Assignment Title or Letter");
             string criteria = Console.ReadLine().ToLower();
@@ -316,12 +320,63 @@ namespace PrivateSchoolProject
             }
         }
 
-        internal static void StudentsWithTwoOrMoreCourses(List<Student> students, string message)
+        public static void StudentsWithTwoOrMoreCourses(List<Student> students, string message)
         {
-            
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"",-22}{"Lastname",-20}{"Firstname",-15}");
+            Console.ResetColor();
+
+            foreach (var student in students)
+            {                
+                if (student.Courses.Count > 1)
+                {
+                    student.PrintStudentName();
+                }
+            }
+        }
+
+        internal static void CoursesCount(List<Course> courses, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Courses Count is: {courses.Count}");
+            Console.ResetColor();
+        }
+
+        internal static void TrainersCount(List<Trainer> trainers, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Trainers Count is: {trainers.Count}");
+            Console.ResetColor();
+        }
+
+        internal static void StudentsCount(List<Student> students, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Students Count is: {students.Count}");
+            Console.ResetColor();
+        }
+
+        internal static void AssignmentsCount(List<Assignment> assignments, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Assignments Count is: {assignments.Count}");
+            Console.ResetColor();
         }
     }
 }
+
+
+
 
 
 

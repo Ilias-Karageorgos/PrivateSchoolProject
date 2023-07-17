@@ -220,7 +220,7 @@ namespace PrivateSchoolProject
             {
                 Id = 15,
                 FirstName = "Panagiotis",
-                LastName = "LavIdopoulos",
+                LastName = "Lavidopoulos",
                 DateOfBirth = new DateTime(1980, 07, 24),
                 TuitionFees = 4647
             };
@@ -231,7 +231,7 @@ namespace PrivateSchoolProject
             {
                 Id = 16,
                 FirstName = "Stamatis",
-                LastName = "GonIdis",
+                LastName = "Gonidis",
                 DateOfBirth = new DateTime(1994, 08, 16),
                 TuitionFees = 7464
             };
