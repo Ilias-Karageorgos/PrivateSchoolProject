@@ -30,17 +30,17 @@ namespace PrivateSchoolProject
                 Console.ResetColor();
 
                 Console.WriteLine($"{"-------------- ALL DATA --------------",first}{"-------------- ORDERED BY --------------",second}{"-------------- FILTER BY --------------",third}{"-------------- STATS --------------",fourth}");
-                Console.WriteLine($"{"1 - Courses",first}{"10 - Courses by Title",second}{"21 - Assignment by Title",third}{"4fsdfsd",fourth}");
-                Console.WriteLine($"{"2 - Trainers",first}{"11 - Courses by Type",second}{"22 - Assignment by Description",third}{"4fsdsd",fourth}");
-                Console.WriteLine($"{"3 - Students",first}{"12 - Courses by Stream",second}{"23 - Assignment by SubDateTime",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"4 - Assignments",first}{"13 - Courses by StartDate",second}{"24 - Assignment by Oral Mark",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"5 - Course Types",first}{"14 - Courses by EndDate",second}{"25 - Assignment by Total Mark",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"6 - Students per Course",first}{"15 - Trainers by Lastname",second}{"",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"7 - Trainers per Course",first}{"16 - Trainers by Firstname",second}{"",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"8 - Assignments per Course",first}{"17 - Students by Lastname",second}{"",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"9 - Assignments per Student",first}{"18 - Students by Firstname ",second}{"",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"",first}{"19 - Students by Tuition Fees",second}{"",third}{"4gsdgsd",fourth}");
-                Console.WriteLine($"{"",first}{"20 - Students by DoB",second}{"",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"1 - Courses",first}{"11 - Courses by Title",second}{"22 - Courses by Title",third}{"4fsdfsd",fourth}");
+                Console.WriteLine($"{"2 - Trainers",first}{"12 - Courses by Type",second}{"23 - Trainers by Firstname Or Lastname",third}{"4fsdsd",fourth}");
+                Console.WriteLine($"{"3 - Students",first}{"13 - Courses by Stream",second}{"24 - Students by Firstname Or Lastname",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"4 - Assignments",first}{"14 - Courses by StartDate",second}{"25 - Assignment by Title",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"5 - Course Types",first}{"15 - Courses by EndDate",second}{"",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"6 - Students per Course",first}{"16 - Trainers by Lastname",second}{"",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"7 - Trainers per Course",first}{"17 - Trainers by Firstname",second}{"",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"8 - Assignments per Course",first}{"18 - Students by Lastname",second}{"",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"9 - Assignments per Student",first}{"19 - Students by Firstname ",second}{"",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"10 - Students who have more than 1 Course",first}{"20 - Students by Tuition Fees",second}{"",third}{"4gsdgsd",fourth}");
+                Console.WriteLine($"{"",first}{"21 - Students by DoB",second}{"",third}{"4gsdgsd",fourth}");
 
                 input = Console.ReadLine();
                 Console.Clear();
@@ -56,18 +56,22 @@ namespace PrivateSchoolProject
                     case "7": View.TrainersPerCourse(db.Courses, $"{"",15}All Trainers per Course\n"); break;
                     case "8": View.AssignmentsPerCourse(db.Courses, $"{"",15}All Assignments per Course\n"); break;
                     case "9": View.AssignmentsPerStudent(db.Students, $"{"",15}All Assignments per Student\n"); break;
-                    case "10": View.Courses(db.Courses.OrderBy(x => x.Title).ToList(), $"{"",25}Courses Ordered by Title"); break;
-                    case "11": View.Courses(db.Courses.OrderBy(x => x.Type).ToList(), $"{"",25}Courses Ordered by Type"); break;
-                    case "12": View.Courses(db.Courses.OrderBy(x => x.Stream).ToList(), $"{"",25}Courses Ordered by Stream"); break;
-                    case "13": View.Courses(db.Courses.OrderBy(x => x.StartDate).ToList(), $"{"",25}Courses Ordered by StardDate"); break;
-                    case "14": View.Courses(db.Courses.OrderBy(x => x.EndDate).ToList(), $"{"",25}Courses Ordered by EndDate"); break;
-                    case "15": View.Trainers(db.Trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname"); break;
-                    case "16": View.Trainers(db.Trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname"); break;
-                    case "17": View.Students(db.Students.OrderBy(x => x.LastName).ToList(), $"{"",25}Students Ordered by Lastname"); break;
-                    case "18": View.Students(db.Students.OrderBy(x => x.FirstName).ToList(), $"{"",25}Students Ordered by Firstname"); break;
-                    case "19": View.Students(db.Students.OrderBy(x => x.TuitionFees).ToList(), $"{"",25}Students Ordered by Tuition Fees"); break;
-                    case "20": View.Students(db.Students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth"); break;
-
+                    case "10": View.StudentsWithTwoOrMoreCourses(db.Students, $"{"",15}All Students with more than 1 Course\n"); break;
+                    case "11": View.Courses(db.Courses.OrderBy(x => x.Title).ToList(), $"{"",25}Courses Ordered by Title\n"); break;
+                    case "12": View.Courses(db.Courses.OrderBy(x => x.Type).ToList(), $"{"",25}Courses Ordered by Type\n"); break;
+                    case "13": View.Courses(db.Courses.OrderBy(x => x.Stream).ToList(), $"{"",25}Courses Ordered by Stream\n"); break;
+                    case "14": View.Courses(db.Courses.OrderBy(x => x.StartDate).ToList(), $"{"",25}Courses Ordered by StardDate\n"); break;
+                    case "15": View.Courses(db.Courses.OrderBy(x => x.EndDate).ToList(), $"{"",25}Courses Ordered by EndDate\n"); break;
+                    case "16": View.Trainers(db.Trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname\n"); break;
+                    case "17": View.Trainers(db.Trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname\n"); break;
+                    case "18": View.Students(db.Students.OrderBy(x => x.LastName).ToList(), $"{"",25}Students Ordered by Lastname\n"); break;
+                    case "19": View.Students(db.Students.OrderBy(x => x.FirstName).ToList(), $"{"",25}Students Ordered by Firstname\n"); break;
+                    case "20": View.Students(db.Students.OrderBy(x => x.TuitionFees).ToList(), $"{"",25}Students Ordered by Tuition Fees\n"); break;
+                    case "21": View.Students(db.Students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth\n"); break;
+                    case "22": View.FilteredCoursesByTitle(db.Courses, $"{"",25}Filtered Courses by Title"); break;
+                    case "23": View.FilteredTrainersByFirstOrLastName(db.Trainers, $"{"",5}Filtered Trainers by Firstname or Lastname"); break;
+                    case "24": View.FilteredStudentsByFirstOrLastName(db.Students, $"{"",5}Filtered Students by Firstname or Lastname"); break;
+                    case "25": View.FilteredAssignmentsByTitle(db.Assignments, $"{"",25}Filtered Assignments by Title"); break;
 
                     default: Console.WriteLine("Wrong Choice"); break;
                 }
@@ -108,7 +112,7 @@ namespace PrivateSchoolProject
             }
         }
 
-        internal static void Students(List<Student> students, string message)
+        public static void Students(List<Student> students, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
@@ -123,7 +127,7 @@ namespace PrivateSchoolProject
 
         }
 
-        internal static void Assignments(List<Assignment> assignments, string message)
+        public static void Assignments(List<Assignment> assignments, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
@@ -137,7 +141,7 @@ namespace PrivateSchoolProject
             }
         }
 
-        internal static void CourseTypes(List<Course> courses, string message)
+        public static void CourseTypes(List<Course> courses, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
@@ -153,7 +157,7 @@ namespace PrivateSchoolProject
 
         }
 
-        internal static void StudentsPerCourse(List<Course> courses, string message)
+        public static void StudentsPerCourse(List<Course> courses, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
@@ -171,7 +175,7 @@ namespace PrivateSchoolProject
             }
         }
 
-        internal static void TrainersPerCourse(List<Course> courses, string message)
+        public static void TrainersPerCourse(List<Course> courses, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
@@ -190,7 +194,7 @@ namespace PrivateSchoolProject
 
         }
 
-        internal static void AssignmentsPerCourse(List<Course> courses, string message)
+        public static void AssignmentsPerCourse(List<Course> courses, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
@@ -208,7 +212,7 @@ namespace PrivateSchoolProject
             }
         }
 
-        internal static void AssignmentsPerStudent(List<Student> students, string message)
+        public static void AssignmentsPerStudent(List<Student> students, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
@@ -230,11 +234,95 @@ namespace PrivateSchoolProject
             }
         }
 
+        public static void FilteredCoursesByTitle(List<Course> courses, string message)
+        {
+            Console.WriteLine("Give Course Title or Letter");
+            string criteria = Console.ReadLine().ToLower();
+            var filteredCourses = courses.Where(x => x.Title.ToLower().Contains(criteria)).ToList();
 
+            if (filteredCourses.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"There is no Course containing {criteria}");
+                Console.ResetColor();
+            }
+            else
+            {
+                View.Courses(filteredCourses, message);
+            }
+        }
 
+        public static void FilteredTrainersByFirstOrLastName(List<Trainer> trainers, string message)
+        {
+            Console.WriteLine("Give the Firstname");
+            string criteriaFirstname = Console.ReadLine().ToLower();
 
+            Console.WriteLine("Give the Lastname");
+            string criteriaLastname = Console.ReadLine().ToLower();
+
+            var filteredTrainers = trainers.Where(x => x.LastName.ToLower().Contains(criteriaFirstname)).ToList();
+            filteredTrainers = trainers.Where(x => x.LastName.ToLower().Contains(criteriaLastname)).ToList();
+
+            if (filteredTrainers.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"There is no Trainer containing {criteriaFirstname} - {criteriaLastname} ");
+                Console.ResetColor();
+            }
+            else
+            {
+                View.Trainers(filteredTrainers, message);
+            }
+        }
+
+        internal static void FilteredStudentsByFirstOrLastName(List<Student> students, string message)
+        {
+            Console.WriteLine("Give the Firstname");
+            string criteriaFirstname = Console.ReadLine().ToLower();
+
+            Console.WriteLine("Give the Lastname");
+            string criteriaLastname = Console.ReadLine().ToLower();
+
+            var filteredStudents = students.Where(x => x.LastName.ToLower().Contains(criteriaFirstname)).ToList();
+            filteredStudents = students.Where(x => x.LastName.ToLower().Contains(criteriaLastname)).ToList();
+
+            if (filteredStudents.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"There is no Student containing {criteriaFirstname} - {criteriaLastname} ");
+                Console.ResetColor();
+            }
+            else
+            {
+                View.Students(filteredStudents, message);
+            }
+        }
+
+        internal static void FilteredAssignmentsByTitle(List<Assignment> assignments, string message)
+        {
+            Console.WriteLine("Give Assignment Title or Letter");
+            string criteria = Console.ReadLine().ToLower();
+            var filteredAssignments = assignments.Where(x => x.Title.ToLower().Contains(criteria)).ToList();
+
+            if (filteredAssignments.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"There is no Assignments containing {criteria}");
+                Console.ResetColor();
+            }
+            else
+            {
+                View.Assignments(filteredAssignments, message);
+            }
+        }
+
+        internal static void StudentsWithTwoOrMoreCourses(List<Student> students, string message)
+        {
+            
+        }
     }
 }
+
 
 
 
