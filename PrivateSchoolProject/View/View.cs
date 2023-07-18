@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace PrivateSchoolProject
 {
-    
+
     public class View //class view gia na ftiaksoume tis methoudous Print pou tha kanei get o xristis apo to switch
     {
         public static void Menu()
@@ -33,15 +33,11 @@ namespace PrivateSchoolProject
             Console.WriteLine($"{"9 - Assignments per Student",first}{"19 - Students by Firstname ",second}{"",third}{"",fourth}");
             Console.WriteLine($"{"10 - Students who have more than 1 Course",first}{"20 - Students by Tuition Fees",second}{"",third}{"",fourth}");
             Console.WriteLine($"{"",first}{"21 - Students by DoB",second}{"",third}{"",fourth}");
-        }
-
-        //epanalipsi???
+        }        
 
         public static void Courses(List<Course> courses, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Id",-8}{"Title",-15}{"Stream",-18}{"Type",-15}{"Start Date",-15}{"End Date",-15}");
             Console.ResetColor();
 
@@ -52,9 +48,7 @@ namespace PrivateSchoolProject
         }
         public static void Trainers(List<Trainer> trainers, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Id",-8}{"Firstname",-15}{"Lastname",-15}");
             Console.ResetColor();
 
@@ -65,9 +59,7 @@ namespace PrivateSchoolProject
         }
         public static void Students(List<Student> students, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Id",-10}{"Firstname",-25}{"Lastname",-20}{"Date of Birth",-20}{"Tuition Fees",-10}");
             Console.ResetColor();
 
@@ -79,9 +71,7 @@ namespace PrivateSchoolProject
         }
         public static void Assignments(List<Assignment> assignments, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Id",-15}{"Title",-18}{"Description",-30}{"Sub Date",-15}{"Oral Mark",-14}{"Total Mark",-5}");
             Console.ResetColor();
 
@@ -92,9 +82,7 @@ namespace PrivateSchoolProject
         }
         public static void CourseTypes(List<Course> courses, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Course Title",-15}{"Course Type",-10}");
             Console.ResetColor();
 
@@ -107,9 +95,7 @@ namespace PrivateSchoolProject
         }
         public static void StudentsPerCourse(List<Course> courses, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Course Title",-25}{"Lastname",-20}{"Firstname",-15}");
             Console.ResetColor();
 
@@ -124,9 +110,7 @@ namespace PrivateSchoolProject
         }
         public static void TrainersPerCourse(List<Course> courses, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Course Title",-25}{"Lastname",-20}{"Firstname",-15}\n");
             Console.ResetColor();
 
@@ -142,9 +126,7 @@ namespace PrivateSchoolProject
         }
         public static void AssignmentsPerCourse(List<Course> courses, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"Course Title",-25}{"Title",-25}{"Description",-15}\n");
             Console.ResetColor();
 
@@ -159,9 +141,7 @@ namespace PrivateSchoolProject
         }
         public static void AssignmentsPerStudent(List<Student> students, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"\n{"Assignment Title",-22}{"Lastname",-20}{"Firstname",-10}\n");
             Console.ResetColor();
 
@@ -258,9 +238,7 @@ namespace PrivateSchoolProject
         }
         public static void StudentsWithTwoOrMoreCourses(List<Student> students, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"{"",-22}{"Lastname",-20}{"Firstname",-15}");
             Console.ResetColor();
 
@@ -274,41 +252,31 @@ namespace PrivateSchoolProject
         }
         public static void CoursesCount(List<Course> courses, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"Courses Count is: {courses.Count}");
             Console.ResetColor();
         }
         public static void TrainersCount(List<Trainer> trainers, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"Trainers Count is: {trainers.Count}");
             Console.ResetColor();
         }
         public static void StudentsCount(List<Student> students, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"Students Count is: {students.Count}");
             Console.ResetColor();
         }
         public static void AssignmentsCount(List<Assignment> assignments, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
             Console.WriteLine($"Assignments Count is: {assignments.Count}");
             Console.ResetColor();
         }
         public static void AssignmentsByCourse(List<Assignment> assignments, string message)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintColoredMessage(message);
 
             var groupedResult = from assi in assignments
                                 group assi by assi.Course; ;
@@ -324,6 +292,12 @@ namespace PrivateSchoolProject
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Wrong Choice - Error 404 (Not Found)");
             Console.ResetColor();
+        }
+        private static void PrintColoredMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
         }
     }
 }

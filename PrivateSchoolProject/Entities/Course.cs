@@ -31,5 +31,4 @@ namespace PrivateSchoolProject
             Console.WriteLine($"|{Title,-10}|\n");
         }
     }
-
 }

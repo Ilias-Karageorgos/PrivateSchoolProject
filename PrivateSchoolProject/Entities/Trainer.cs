@@ -19,9 +19,7 @@ namespace PrivateSchoolProject
         }
         public void PrintTrainerName()
         {
-            Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-15}|"); //epanalipsi kodika me students printname??
+            Console.WriteLine($"{"",-20}|{LastName,-20}|{FirstName,-15}|");
         }
-
     }
-
 }
