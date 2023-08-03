@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Application.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Enums\CourseType.cs" />
     <Compile Include="Entities\Assignment.cs" />
     <Compile Include="Entities\Course.cs" />
@@ -52,10 +53,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\Trainer.cs" />
+    <Compile Include="RepositoryService\AssignmentService.cs" />
+    <Compile Include="RepositoryService\CourseService.cs" />
+    <Compile Include="RepositoryService\StudentService.cs" />
+    <Compile Include="RepositoryService\TrainerService.cs" />
+    <Compile Include="View\Assignments\ViewAssignment.cs" />
+    <Compile Include="View\Courses\ViewCourse.cs" />
+    <Compile Include="View\Students\ViewStudent.cs" />
+    <Compile Include="View\Trainers\ViewTrainer.cs" />
     <Compile Include="View\View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

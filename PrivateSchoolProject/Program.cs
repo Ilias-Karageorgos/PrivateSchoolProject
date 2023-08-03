@@ -9,7 +9,9 @@ namespace PrivateSchoolProject
     {
         static void Main(string[] args)
         {
-            Application.Run();
+            Application application = new Application();
+
+            application.Run();
         }
     }
 }

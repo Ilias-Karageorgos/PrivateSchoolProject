@@ -35,17 +35,7 @@ namespace PrivateSchoolProject
             Console.WriteLine($"{"",first}{"21 - Students by DoB",second}{"",third}{"",fourth}");
         }        
 
-        public static void Courses(List<Course> courses, string message)
-        {
-            PrintColoredMessage(message);
-            Console.WriteLine($"{"Id",-8}{"Title",-15}{"Stream",-18}{"Type",-15}{"Start Date",-15}{"End Date",-15}");
-            Console.ResetColor();
-
-            foreach (var course in courses)
-            {
-                course.PrintCourses();
-            }
-        }
+        
         public static void Trainers(List<Trainer> trainers, string message)
         {
             PrintColoredMessage(message);
@@ -80,65 +70,10 @@ namespace PrivateSchoolProject
                 assignment.PrintAssignment();
             }
         }
-        public static void CourseTypes(List<Course> courses, string message)
-        {
-            PrintColoredMessage(message);
-            Console.WriteLine($"{"Course Title",-15}{"Course Type",-10}");
-            Console.ResetColor();
-
-            foreach (var course in courses)
-            {
-                course.PrintCourseTypes();
-            }
-
-
-        }
-        public static void StudentsPerCourse(List<Course> courses, string message)
-        {
-            PrintColoredMessage(message);
-            Console.WriteLine($"{"Course Title",-25}{"Lastname",-20}{"Firstname",-15}");
-            Console.ResetColor();
-
-            foreach (var course in courses)
-            {
-                course.PrintTitle();
-                foreach (var student in course.Students)
-                {
-                    student.PrintStudentName();
-                }
-            }
-        }
-        public static void TrainersPerCourse(List<Course> courses, string message)
-        {
-            PrintColoredMessage(message);
-            Console.WriteLine($"{"Course Title",-25}{"Lastname",-20}{"Firstname",-15}\n");
-            Console.ResetColor();
-
-            foreach (var course in courses)
-            {
-                course.PrintTitle();
-                foreach (var trainer in course.Trainers)
-                {
-                    trainer.PrintTrainerName();
-                }
-            }
-
-        }
-        public static void AssignmentsPerCourse(List<Course> courses, string message)
-        {
-            PrintColoredMessage(message);
-            Console.WriteLine($"{"Course Title",-25}{"Title",-25}{"Description",-15}\n");
-            Console.ResetColor();
-
-            foreach (var course in courses)
-            {
-                course.PrintTitle();
-                foreach (var assignment in course.Assignments)
-                {
-                    assignment.PrintAssignmentTitleDisc();
-                }
-            }
-        }
+        
+        
+        
+     
         public static void AssignmentsPerStudent(List<Student> students, string message)
         {
             PrintColoredMessage(message);
@@ -158,23 +93,7 @@ namespace PrivateSchoolProject
                 }
             }
         }
-        public static void FilteredCoursesByTitle(List<Course> courses, string message)
-        {
-            Console.WriteLine("Give Course Title or Letter");
-            string criteria = Console.ReadLine().ToLower();
-            var filteredCourses = courses.Where(x => x.Title.ToLower().Contains(criteria)).ToList();
-
-            if (filteredCourses.Count == 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"There is no Course containing {criteria}");
-                Console.ResetColor();
-            }
-            else
-            {
-                View.Courses(filteredCourses, message);
-            }
-        }
+        
         public static void FilteredTrainersByFirstOrLastName(List<Trainer> trainers, string message)
         {
             Console.WriteLine("Give the Firstname");
@@ -250,12 +169,7 @@ namespace PrivateSchoolProject
                 }
             }
         }
-        public static void CoursesCount(List<Course> courses, string message)
-        {
-            PrintColoredMessage(message);
-            Console.WriteLine($"Courses Count is: {courses.Count}");
-            Console.ResetColor();
-        }
+        
         public static void TrainersCount(List<Trainer> trainers, string message)
         {
             PrintColoredMessage(message);
@@ -287,13 +201,16 @@ namespace PrivateSchoolProject
             }
             Console.ResetColor();
         }
+
+
+
         public static void Error()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Wrong Choice - Error 404 (Not Found)");
             Console.ResetColor();
         }
-        private static void PrintColoredMessage(string message)
+        public static void PrintColoredMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(message);
