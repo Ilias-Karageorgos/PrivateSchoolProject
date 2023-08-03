@@ -10,34 +10,43 @@ namespace PrivateSchoolProject.Controllers
     internal class CoursesController
     {
         MyDataBase db = new MyDataBase();
+        //NA VALO SE OLOUS TOUS CONTROLLERS METAVLITI GIA DB......
 
         public void ReadCourses()
         {
-            ViewCourse.GetCourses(db.Courses, $"{"",35}All Courses\n");
+            var courses = db.Courses;
+
+            ViewCourse.GetCourses(courses, $"{"",35}All Courses\n");
         }
         public void ReadCourseTypes() 
         {
-            ViewCourse.CourseTypes(db.Courses, $"{"",8}Course Types\n");
+            var courses = db.Courses;
+            ViewCourse.CourseTypes(courses, $"{"",8}Course Types\n");
         }
         public void GetStudentsPerCourse()
         {
-            ViewCourse.StudentsPerCourse(db.Courses, $"{"",15}All Students per Course\n");
+            var courses = db.Courses;
+            ViewCourse.StudentsPerCourse(courses, $"{"",15}All Students per Course\n");
         }
         public void GetTrainersPerCourse()
         {
-            ViewCourse.TrainersPerCourse(db.Courses, $"{"",15}All Trainers per Course\n");
+            var courses = db.Courses;
+            ViewCourse.TrainersPerCourse(courses, $"{"",15}All Trainers per Course\n");
         }
         public void GetAssignmentsPerCourse()
         {
-            ViewCourse.AssignmentsPerCourse(db.Courses, $"{"",15}All Assignments per Course\n");
+            var courses = db.Courses;
+            ViewCourse.AssignmentsPerCourse(courses, $"{"",15}All Assignments per Course\n");
         }
         public void FilteredCoursesByTitle()
         {
-            ViewCourse.FilteredCoursesByTitle(db.Courses, $"{"",25}Filtered Courses by Title\n");
+            var courses = db.Courses;
+            ViewCourse.FilteredCoursesByTitle(courses, $"{"",25}Filtered Courses by Title\n");
         }
         public void GetCoursesCount()
         {
-            ViewCourse.CoursesCount(db.Courses, $"{"",25}Courses Count\n");
+            var courses = db.Courses;
+            ViewCourse.CoursesCount(courses, $"{"",25}Courses Count\n");
         }
     }
 }

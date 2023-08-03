@@ -8,7 +8,6 @@ namespace PrivateSchoolProject.Views.Courses
 {
     internal class ViewCourse
     {
-
         public static void GetCourses(List<Course> courses, string message)
         {
             View.PrintColoredMessage(message);

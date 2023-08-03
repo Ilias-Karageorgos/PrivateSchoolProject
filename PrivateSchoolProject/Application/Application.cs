@@ -1,5 +1,7 @@
 ﻿using PrivateSchoolProject.Controllers;
 using PrivateSchoolProject.Views.Courses;
+using PrivateSchoolProject.Views.Students;
+using PrivateSchoolProject.Views.Trainers;
 using System;
 using System.Data;
 using System.Linq;
@@ -9,7 +11,10 @@ namespace PrivateSchoolProject
     public class Application
     {
         private CoursesController controllerCourse = new CoursesController();
-        
+        private AssignmentsController controllerAssignment = new AssignmentsController();
+        private StudentsController controllerStudent = new StudentsController();
+        private TrainersController controllerTrainer = new TrainersController();
+
         public void Run()
         {
             MyDataBase db = new MyDataBase();
@@ -33,35 +38,35 @@ namespace PrivateSchoolProject
             switch (input)
             {
                 case "1": controllerCourse.ReadCourses(); break;
-                case "2": View.Trainers(db.Trainers, $"{"",15}All Trainers\n"); break;
-                case "3": View.Students(db.Students, $"{"",35}All Students\n"); break;
-                case "4": View.Assignments(db.Assignments, $"{"",40}All Assignments\n"); break;
+                case "2": controllerTrainer.GetTrainers(); break;
+                case "3": controllerStudent.GetStudents(); break;
+                case "4": controllerAssignment.GetAssignments(); break;
                 case "5": controllerCourse.ReadCourseTypes(); break;
                 case "6": controllerCourse.GetStudentsPerCourse(); break;
                 case "7": controllerCourse.GetTrainersPerCourse(); break;
                 case "8": controllerCourse.GetAssignmentsPerCourse(); break;
-                case "9": View.AssignmentsPerStudent(db.Students, $"{"",15}All Assignments per Student\n"); break;
-                case "10": View.StudentsWithTwoOrMoreCourses(db.Students, $"{"",15}All Students with more than 1 Course\n"); break;
+                case "9": controllerStudent.GetAssignmentsPerStudent(); break;
+                case "10": controllerStudent.GetStudentsWithTwoOrMoreCourses(); break;
                 case "11": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.Title).ToList(), $"{"",25}Courses Ordered by Title\n"); break;
                 case "12": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.Type).ToList(), $"{"",25}Courses Ordered by Type\n"); break;
                 case "13": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.Stream).ToList(), $"{"",25}Courses Ordered by Stream\n"); break;
                 case "14": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.StartDate).ToList(), $"{"",25}Courses Ordered by StardDate\n"); break;
                 case "15": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.EndDate).ToList(), $"{"",25}Courses Ordered by EndDate\n"); break;
-                case "16": View.Trainers(db.Trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname\n"); break;
-                case "17": View.Trainers(db.Trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname\n"); break;
-                case "18": View.Students(db.Students.OrderBy(x => x.LastName).ToList(), $"{"",25}Students Ordered by Lastname\n"); break;
-                case "19": View.Students(db.Students.OrderBy(x => x.FirstName).ToList(), $"{"",25}Students Ordered by Firstname\n"); break;
-                case "20": View.Students(db.Students.OrderBy(x => x.TuitionFees).ToList(), $"{"",25}Students Ordered by Tuition Fees\n"); break;
-                case "21": View.Students(db.Students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth\n"); break;
+                case "16": ViewTrainer.Trainers(db.Trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname\n"); break;
+                case "17": ViewTrainer.Trainers(db.Trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname\n"); break;
+                case "18": ViewStudent.Students(db.Students.OrderBy(x => x.LastName).ToList(), $"{"",25}Students Ordered by Lastname\n"); break;
+                case "19": ViewStudent.Students(db.Students.OrderBy(x => x.FirstName).ToList(), $"{"",25}Students Ordered by Firstname\n"); break;
+                case "20": ViewStudent.Students(db.Students.OrderBy(x => x.TuitionFees).ToList(), $"{"",25}Students Ordered by Tuition Fees\n"); break;
+                case "21": ViewStudent.Students(db.Students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth\n"); break;
                 case "22": controllerCourse.FilteredCoursesByTitle(); break;
-                case "23": View.FilteredTrainersByFirstOrLastName(db.Trainers, $"{"",5}Filtered Trainers by Firstname or Lastname\n"); break;
-                case "24": View.FilteredStudentsByFirstOrLastName(db.Students, $"{"",5}Filtered Students by Firstname or Lastname\n"); break;
-                case "25": View.FilteredAssignmentsByTitle(db.Assignments, $"{"",25}Filtered Assignments by Title\n"); break;
+                case "23": controllerTrainer.GetFilteredTrainersByFirstOrLastName(); break;
+                case "24": controllerStudent.GetFilteredStudentsByFirstOrLastName(); break;
+                case "25": controllerAssignment.GetFilteredAssignmentsByTitle(); break;
                 case "26": controllerCourse.GetCoursesCount(); break;
-                case "27": View.TrainersCount(db.Trainers, $"{"",25}Trainers Count\n"); break;
-                case "28": View.StudentsCount(db.Students, $"{"",25}Students Count\n"); break;
-                case "29": View.AssignmentsCount(db.Assignments, $"{"",25}Assignments Count\n"); break;
-                case "30": View.AssignmentsByCourse(db.Assignments, $"{"",20}Assignments by Course\n"); break;
+                case "27": controllerTrainer.GetTrainersCount(); break;
+                case "28": controllerStudent.GetStudentsCount(); break;
+                case "29": controllerAssignment.GetAssignmentsCount(); break;
+                case "30": controllerAssignment.GetAssignmentsByCourse(); break;
                 default: View.Error(); break;
             }
         }
