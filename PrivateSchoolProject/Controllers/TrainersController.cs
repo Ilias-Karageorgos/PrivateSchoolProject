@@ -13,15 +13,18 @@ namespace PrivateSchoolProject.Controllers
 
         public void GetTrainers()
         {
-            ViewTrainer.Trainers(db.Trainers, $"{"",15}All Trainers\n");
+            var trainers = db.Trainers;
+            ViewTrainer.Trainers(trainers, $"{"",15}All Trainers\n");
         }
         public void GetFilteredTrainersByFirstOrLastName()
         {
-            ViewTrainer.FilteredTrainersByFirstOrLastName(db.Trainers, $"{"",5}Filtered Trainers by Firstname or Lastname\n");
+            var trainers = db.Trainers;
+            ViewTrainer.FilteredTrainersByFirstOrLastName(trainers, $"{"",5}Filtered Trainers by Firstname or Lastname\n");
         }
         public void GetTrainersCount()
         {
-            ViewTrainer.TrainersCount(db.Trainers, $"{"",25}Trainers Count\n");
+            var trainers = db.Trainers;
+            ViewTrainer.TrainersCount(trainers, $"{"",25}Trainers Count\n");
         }
     }
 }

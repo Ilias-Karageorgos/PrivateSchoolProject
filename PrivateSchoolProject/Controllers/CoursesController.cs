@@ -1,4 +1,5 @@
-﻿using PrivateSchoolProject.Views.Courses;
+﻿using PrivateSchoolProject.RepositoryService;
+using PrivateSchoolProject.Views.Courses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,43 +10,111 @@ namespace PrivateSchoolProject.Controllers
 {
     internal class CoursesController
     {
-        MyDataBase db = new MyDataBase();
-        //NA VALO SE OLOUS TOUS CONTROLLERS METAVLITI GIA DB......
-
-        public void ReadCourses()
+        CourseService courseService = new CourseService();
+                
+        public void ReadCourses() 
         {
-            var courses = db.Courses;
+            List<Course> courses = new List<Course>();
+
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);                
+            }            
 
             ViewCourse.GetCourses(courses, $"{"",35}All Courses\n");
         }
         public void ReadCourseTypes() 
         {
-            var courses = db.Courses;
+            List<Course> courses = new List<Course>();
+
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
             ViewCourse.CourseTypes(courses, $"{"",8}Course Types\n");
         }
         public void GetStudentsPerCourse()
         {
-            var courses = db.Courses;
+            List<Course> courses = new List<Course>();
+
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+            
             ViewCourse.StudentsPerCourse(courses, $"{"",15}All Students per Course\n");
         }
         public void GetTrainersPerCourse()
         {
-            var courses = db.Courses;
+            List<Course> courses = new List<Course>();
+
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
             ViewCourse.TrainersPerCourse(courses, $"{"",15}All Trainers per Course\n");
         }
         public void GetAssignmentsPerCourse()
         {
-            var courses = db.Courses;
+            List<Course> courses = new List<Course>();
+
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
             ViewCourse.AssignmentsPerCourse(courses, $"{"",15}All Assignments per Course\n");
         }
         public void FilteredCoursesByTitle()
         {
-            var courses = db.Courses;
+            List<Course> courses = new List<Course>();
+
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
             ViewCourse.FilteredCoursesByTitle(courses, $"{"",25}Filtered Courses by Title\n");
         }
         public void GetCoursesCount()
         {
-            var courses = db.Courses;
+            List<Course> courses = new List<Course>();
+
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+                       
             ViewCourse.CoursesCount(courses, $"{"",25}Courses Count\n");
         }
     }

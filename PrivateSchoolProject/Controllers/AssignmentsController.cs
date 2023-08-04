@@ -13,19 +13,24 @@ namespace PrivateSchoolProject.Controllers
 
         public void GetAssignments()
         {
-            ViewAssignment.Assignments(db.Assignments, $"{"",40}All Assignments\n");
+            var assignments = db.Assignments;
+
+            ViewAssignment.Assignments(assignments, $"{"",40}All Assignments\n");
         }
         public void GetFilteredAssignmentsByTitle()
         {
-            ViewAssignment.FilteredAssignmentsByTitle(db.Assignments, $"{"",25}Filtered Assignments by Title\n");
+            var assignments = db.Assignments;
+            ViewAssignment.FilteredAssignmentsByTitle(assignments, $"{"",25}Filtered Assignments by Title\n");
         }
         public void GetAssignmentsCount()
         {
-            ViewAssignment.AssignmentsCount(db.Assignments, $"{"",25}Assignments Count\n");
+            var assignments = db.Assignments;
+            ViewAssignment.AssignmentsCount(assignments, $"{"",25}Assignments Count\n");
         }
         public void GetAssignmentsByCourse()
         {
-            ViewAssignment.AssignmentsByCourse(db.Assignments, $"{"",20}Assignments by Course\n");
+            var assignments = db.Assignments;
+            ViewAssignment.AssignmentsByCourse(assignments, $"{"",20}Assignments by Course\n");
         }
     }
 }

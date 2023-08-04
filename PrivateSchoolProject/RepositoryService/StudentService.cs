@@ -8,5 +8,11 @@ namespace PrivateSchoolProject.RepositoryService
 {
     internal class StudentService
     {
+        private MyDataBase db = new MyDataBase();
+
+        public List<Student> GetStudents()
+        {         
+            return db.Students;
+        }
     }
 }
