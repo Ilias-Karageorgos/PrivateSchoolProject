@@ -8,5 +8,11 @@ namespace PrivateSchoolProject.RepositoryService
 {
     internal class TrainerService
     {
+        private MyDataBase db = new MyDataBase();
+
+        public List<Trainer> GetTrainers() 
+        { 
+            return db.Trainers; 
+        }
     }
 }

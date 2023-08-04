@@ -8,5 +8,11 @@ namespace PrivateSchoolProject.RepositoryService
 {
     internal class AssignmentService
     {
+        private MyDataBase db = new MyDataBase();
+
+        public List<Assignment> GetAssignments()
+        {
+            return db.Assignments;
+        }
     }
 }

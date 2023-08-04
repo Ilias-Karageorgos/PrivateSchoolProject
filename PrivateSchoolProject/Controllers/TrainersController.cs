@@ -1,4 +1,5 @@
-﻿using PrivateSchoolProject.Views.Trainers;
+﻿using PrivateSchoolProject.RepositoryService;
+using PrivateSchoolProject.Views.Trainers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,51 @@ namespace PrivateSchoolProject.Controllers
 {
     internal class TrainersController
     {
-        MyDataBase db = new MyDataBase();
+        TrainerService trainerService = new TrainerService();
 
         public void GetTrainers()
         {
-            var trainers = db.Trainers;
+            List<Trainer> trainers = new List<Trainer>();
+
+            try
+            {
+                trainers = trainerService.GetTrainers();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
             ViewTrainer.Trainers(trainers, $"{"",15}All Trainers\n");
         }
         public void GetFilteredTrainersByFirstOrLastName()
         {
-            var trainers = db.Trainers;
+            List<Trainer> trainers = new List<Trainer>();
+
+            try
+            {
+                trainers = trainerService.GetTrainers();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
             ViewTrainer.FilteredTrainersByFirstOrLastName(trainers, $"{"",5}Filtered Trainers by Firstname or Lastname\n");
         }
         public void GetTrainersCount()
         {
-            var trainers = db.Trainers;
+            List<Trainer> trainers = new List<Trainer>();
+
+            try
+            {
+                trainers = trainerService.GetTrainers();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
             ViewTrainer.TrainersCount(trainers, $"{"",25}Trainers Count\n");
         }
     }
