@@ -27,7 +27,7 @@ namespace PrivateSchoolProject
             Console.WriteLine($"{"3 - Students",first}{"13 - Courses by Stream",second}{"24 - Students by Firstname Or Lastname",third}{"28 - Stundents Count",fourth}");
             Console.WriteLine($"{"4 - Assignments",first}{"14 - Courses by StartDate",second}{"25 - Assignment by Title",third}{"29 - Assignments Count",fourth}");
             Console.WriteLine($"{"5 - Course Types",first}{"15 - Courses by EndDate",second}{"",third}{"30 - Assignments by Course",fourth}");
-            Console.WriteLine($"{"6 - Students per Course",first}{"16 - Trainers by Lastname",second}{"",third}{"",fourth}");
+            Console.WriteLine($"{"6 - Students per Course",first}{"16 - Trainers by Lastname",second}{"31 CREATE COURSE (TEMPORARY HERE)",third}{"",fourth}");
             Console.WriteLine($"{"7 - Trainers per Course",first}{"17 - Trainers by Firstname",second}{"",third}{"",fourth}");
             Console.WriteLine($"{"8 - Assignments per Course",first}{"18 - Students by Lastname",second}{"",third}{"",fourth}");
             Console.WriteLine($"{"9 - Assignments per Student",first}{"19 - Students by Firstname ",second}{"",third}{"",fourth}");

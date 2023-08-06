@@ -100,5 +100,46 @@ namespace PrivateSchoolProject.Views.Courses
             Console.WriteLine($"Courses Count is: {courses.Count}");
             Console.ResetColor();
         }
+
+        public static Course CreateCourse() //na kano validations
+        {
+            Console.WriteLine("Give Course Title");
+            string courseTitle = Console.ReadLine();
+
+            Console.WriteLine("Give Course Stream");
+            string courseStream = Console.ReadLine();
+
+            Console.WriteLine("Give Course Start Date ex. 2022/10/25");
+            string inputStartD = Console.ReadLine();
+            DateTime startDate;
+            DateTime.TryParse(inputStartD, out startDate);
+
+            Console.WriteLine("Give Course End Date ex 2022/12/20");
+            string inputEndD = Console.ReadLine();
+            DateTime endDate;
+            DateTime.TryParse(inputEndD, out endDate);
+
+            //get Type Enum 
+            Console.WriteLine("Select Course Type");
+            string[] types = Enum.GetNames(typeof(CourseType)); //exoume ena pinaka me ola ta onoma apo types (dld part kai fulltime)
+
+            for (int i = 0; i < types.Length; i++)
+            {
+                Console.WriteLine($"{i,-4}-{types[i]}");
+            }
+            int choice = Convert.ToInt32(Console.ReadLine());
+            CourseType courseType = (CourseType)choice;  //edo pairno auto p edose o xristis
+
+            Course createdCourse = new Course()
+            {
+                Title = courseTitle,
+                Stream = courseStream,
+                StartDate = startDate,
+                EndDate = endDate,
+                Type = courseType
+            };
+
+            return createdCourse;
+        }
     }
 }

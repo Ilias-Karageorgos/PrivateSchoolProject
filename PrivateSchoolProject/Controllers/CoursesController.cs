@@ -11,8 +11,9 @@ namespace PrivateSchoolProject.Controllers
     internal class CoursesController
     {
         CourseService courseService = new CourseService();
-                
-        public void ReadCourses() 
+
+
+        public void ReadCourses()
         {
             List<Course> courses = new List<Course>();
 
@@ -22,12 +23,12 @@ namespace PrivateSchoolProject.Controllers
             }
             catch (Exception error)
             {
-                Console.WriteLine(error.Message);                
-            }            
+                Console.WriteLine(error.Message);
+            }
 
             ViewCourse.GetCourses(courses, $"{"",35}All Courses\n");
         }
-        public void ReadCourseTypes() 
+        public void ReadCourseTypes()
         {
             List<Course> courses = new List<Course>();
 
@@ -54,7 +55,7 @@ namespace PrivateSchoolProject.Controllers
             {
                 Console.WriteLine(error.Message);
             }
-            
+
             ViewCourse.StudentsPerCourse(courses, $"{"",15}All Students per Course\n");
         }
         public void GetTrainersPerCourse()
@@ -114,8 +115,21 @@ namespace PrivateSchoolProject.Controllers
             {
                 Console.WriteLine(error.Message);
             }
-                       
+
             ViewCourse.CoursesCount(courses, $"{"",25}Courses Count\n");
         }
+
+
+
+        public void CreateCourse()
+        {
+            Course createdCourse = ViewCourse.CreateCourse();
+
+            courseService.CreateCourse(createdCourse);
+
+            ReadCourses();
+        }
+
+
     }
 }
