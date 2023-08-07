@@ -20,7 +20,6 @@ namespace PrivateSchoolProject.RepositoryService
         public void CreateCourse(Course createdCourse)
         {
             int lastCourseId = db.Courses[db.Courses.Count - 1].Id;
-
             createdCourse.Id = lastCourseId + 1;
 
             db.Courses.Add(createdCourse);

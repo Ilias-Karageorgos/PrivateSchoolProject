@@ -14,5 +14,13 @@ namespace PrivateSchoolProject.RepositoryService
         {         
             return db.Students;
         }
+
+        public void CreateStudent(Student createdStudent)
+        {
+            int lastStudentId = db.Students[db.Students.Count - 1].Id;
+            createdStudent.Id = lastStudentId + 1;
+
+            db.Students.Add(createdStudent);
+        }
     }
 }

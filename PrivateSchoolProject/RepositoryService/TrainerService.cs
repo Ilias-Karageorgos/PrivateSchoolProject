@@ -19,8 +19,8 @@ namespace PrivateSchoolProject.RepositoryService
         public void CreateTrainer(Trainer createdTrainer)
         {
             int lastTrainerId = db.Trainers[db.Trainers.Count - 1].Id;
-
             createdTrainer.Id = lastTrainerId + 1;
+
             db.Trainers.Add(createdTrainer);
         }
     }

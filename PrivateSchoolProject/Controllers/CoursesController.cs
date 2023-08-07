@@ -141,7 +141,7 @@ namespace PrivateSchoolProject.Controllers
         }
 
 
-        public void CreateCourse()
+        public void CreateCourseController()
         {
             Course createdCourse = ViewCourse.CreateCourse();
 

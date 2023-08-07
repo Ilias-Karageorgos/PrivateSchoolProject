@@ -110,5 +110,15 @@ namespace PrivateSchoolProject.Controllers
                 case "DateOfBirth": ViewStudent.GetStudents(students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth\n"); break;
             }
         }
+
+
+        public void CreateStudentController()
+        {
+            Student createdStudent = ViewStudent.CreateStudent();
+
+            studentService.CreateStudent(createdStudent);
+
+            GetStudents();
+        }
     }
 }

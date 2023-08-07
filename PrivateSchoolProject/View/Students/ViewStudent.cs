@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PrivateSchoolProject.Views.Students
 {
     internal class ViewStudent
-    {        
+    {
         public static void GetStudents(List<Student> students, string message)
         {
             View.PrintColoredMessage(message);
@@ -79,6 +79,33 @@ namespace PrivateSchoolProject.Views.Students
                     }
                 }
             }
+        }
+
+        public static Student CreateStudent()
+        {
+            Console.WriteLine("Give Student's Firstname");
+            string studentFirstname = Console.ReadLine();
+
+            Console.WriteLine("Give Student's Lastname");
+            string studentLastname = Console.ReadLine();
+
+            Console.WriteLine("Give Student's TuitionFees (number)");
+            int tuitionFees = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Give Student's Date Of Birth (ex. 1999-05-26)");
+            string inputDoB = Console.ReadLine();
+            DateTime doB;
+            DateTime.TryParse(inputDoB, out doB);
+
+            Student createdStudent = new Student()
+            {
+                FirstName = studentFirstname,
+                LastName = studentLastname,
+                TuitionFees = tuitionFees,
+                DateOfBirth = doB
+            };
+
+            return createdStudent;
         }
     }
 }
