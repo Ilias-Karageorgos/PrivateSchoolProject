@@ -67,6 +67,7 @@ namespace PrivateSchoolProject
                 case "29": controllerAssignment.GetAssignmentsCount(); break;
                 case "30": controllerAssignment.GetAssignmentsByCourse(); break;
                 case "31": controllerCourse.CreateCourse(); break;
+                case "32": controllerTrainer.CreateTrainer(); break;
 
                 default: View.Error(); break;
             }

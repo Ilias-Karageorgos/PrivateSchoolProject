@@ -47,5 +47,22 @@ namespace PrivateSchoolProject.Views.Trainers
             Console.WriteLine($"Trainers Count is: {trainers.Count}");
             Console.ResetColor();
         }
+
+        public static Trainer CreateTrainer()
+        {
+            Console.WriteLine("Give Trainer's Firstname");
+            string trainerFirstname = Console.ReadLine();
+
+            Console.WriteLine("Give Trainer's Lastname");
+            string trainerLastname = Console.ReadLine();
+
+            Trainer createdTrainer = new Trainer()
+            {
+                LastName = trainerLastname,
+                FirstName = trainerFirstname
+            };
+
+            return createdTrainer;
+        }
     }
 }

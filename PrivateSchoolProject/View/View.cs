@@ -28,7 +28,7 @@ namespace PrivateSchoolProject
             Console.WriteLine($"{"4 - Assignments",first}{"14 - Courses by StartDate",second}{"25 - Assignment by Title",third}{"29 - Assignments Count",fourth}");
             Console.WriteLine($"{"5 - Course Types",first}{"15 - Courses by EndDate",second}{"",third}{"30 - Assignments by Course",fourth}");
             Console.WriteLine($"{"6 - Students per Course",first}{"16 - Trainers by Lastname",second}{"31 CREATE COURSE (TEMPORARY HERE)",third}{"",fourth}");
-            Console.WriteLine($"{"7 - Trainers per Course",first}{"17 - Trainers by Firstname",second}{"",third}{"",fourth}");
+            Console.WriteLine($"{"7 - Trainers per Course",first}{"17 - Trainers by Firstname",second}{"32 CREATE TRAINER (TEMPORARY HERE)",third}{"",fourth}");
             Console.WriteLine($"{"8 - Assignments per Course",first}{"18 - Students by Lastname",second}{"",third}{"",fourth}");
             Console.WriteLine($"{"9 - Assignments per Student",first}{"19 - Students by Firstname ",second}{"",third}{"",fourth}");
             Console.WriteLine($"{"10 - Students who have more than 1 Course",first}{"20 - Students by Tuition Fees",second}{"",third}{"",fourth}");

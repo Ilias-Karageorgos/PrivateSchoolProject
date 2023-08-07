@@ -58,9 +58,6 @@ namespace PrivateSchoolProject.Controllers
 
             ViewTrainer.TrainersCount(trainers, $"{"",25}Trainers Count\n");
         }
-
-
-
         public void TrainersOrderedBy(string prop)
         {
             List<Trainer> trainers = new List<Trainer>();
@@ -79,6 +76,15 @@ namespace PrivateSchoolProject.Controllers
                 case "LastName": ViewTrainer.GetTrainers(trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname\n"); break;
                 case "FirstName": ViewTrainer.GetTrainers(trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname\n"); break;
             }
+        }
+
+        public void CreateTrainer()
+        {
+            Trainer createdTrainer = ViewTrainer.CreateTrainer();
+
+            trainerService.CreateTrainer(createdTrainer);
+
+            GetTrainers();
         }
     }
 }
