@@ -8,7 +8,7 @@ namespace PrivateSchoolProject.Views.Trainers
 {
     internal class ViewTrainer
     {
-        public static void Trainers(List<Trainer> trainers, string message)
+        public static void GetTrainers(List<Trainer> trainers, string message)
         {
             View.PrintColoredMessage(message);
             Console.WriteLine($"{"Id",-8}{"Firstname",-15}{"Lastname",-15}");
@@ -38,7 +38,7 @@ namespace PrivateSchoolProject.Views.Trainers
             }
             else
             {
-                ViewTrainer.Trainers(filteredTrainers, message);
+                ViewTrainer.GetTrainers(filteredTrainers, message);
             }
         }
         public static void TrainersCount(List<Trainer> trainers, string message)

@@ -17,8 +17,7 @@ namespace PrivateSchoolProject
 
         public void Run()
         {
-            MyDataBase db = new MyDataBase();
-
+            //FIX MENU CREATE OR READ
             string input;
 
             do
@@ -28,12 +27,12 @@ namespace PrivateSchoolProject
                 input = Console.ReadLine();
                 Console.Clear();
 
-                GetOptions(db, input);
+                GetOptions(input);
 
             } while (input != "e" && input != "E");
         }
 
-        public void GetOptions(MyDataBase db, string input)
+        public void GetOptions(string input)
         {
             switch (input)
             {
@@ -47,17 +46,17 @@ namespace PrivateSchoolProject
                 case "8": controllerCourse.GetAssignmentsPerCourse(); break;
                 case "9": controllerStudent.GetAssignmentsPerStudent(); break;
                 case "10": controllerStudent.GetStudentsWithTwoOrMoreCourses(); break;
-                case "11": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.Title).ToList(), $"{"",25}Courses Ordered by Title\n"); break;
-                case "12": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.Type).ToList(), $"{"",25}Courses Ordered by Type\n"); break;
-                case "13": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.Stream).ToList(), $"{"",25}Courses Ordered by Stream\n"); break;
-                case "14": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.StartDate).ToList(), $"{"",25}Courses Ordered by StardDate\n"); break;
-                case "15": ViewCourse.GetCourses(db.Courses.OrderBy(x => x.EndDate).ToList(), $"{"",25}Courses Ordered by EndDate\n"); break;
-                case "16": ViewTrainer.Trainers(db.Trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname\n"); break;
-                case "17": ViewTrainer.Trainers(db.Trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname\n"); break;
-                case "18": ViewStudent.Students(db.Students.OrderBy(x => x.LastName).ToList(), $"{"",25}Students Ordered by Lastname\n"); break;
-                case "19": ViewStudent.Students(db.Students.OrderBy(x => x.FirstName).ToList(), $"{"",25}Students Ordered by Firstname\n"); break;
-                case "20": ViewStudent.Students(db.Students.OrderBy(x => x.TuitionFees).ToList(), $"{"",25}Students Ordered by Tuition Fees\n"); break;
-                case "21": ViewStudent.Students(db.Students.OrderBy(x => x.DateOfBirth).ToList(), $"{"",25}Students Ordered by Date of Birth\n"); break;
+                case "11": controllerCourse.CoursesOrderedBy("Title"); break;
+                case "12": controllerCourse.CoursesOrderedBy("Type"); break;
+                case "13": controllerCourse.CoursesOrderedBy("Stream"); break;
+                case "14": controllerCourse.CoursesOrderedBy("StartDate"); break;
+                case "15": controllerCourse.CoursesOrderedBy("EndDate"); break;
+                case "16": controllerTrainer.TrainersOrderedBy("LastName"); break;
+                case "17": controllerTrainer.TrainersOrderedBy("FirstName"); ; break;
+                case "18": controllerStudent.StudentsOrderedBy("LastName"); break;
+                case "19": controllerStudent.StudentsOrderedBy("FirstName"); ; break;
+                case "20": controllerStudent.StudentsOrderedBy("TuitionFees"); break;
+                case "21": controllerStudent.StudentsOrderedBy("DateOfBirth"); break;
                 case "22": controllerCourse.FilteredCoursesByTitle(); break;
                 case "23": controllerTrainer.GetFilteredTrainersByFirstOrLastName(); break;
                 case "24": controllerStudent.GetFilteredStudentsByFirstOrLastName(); break;
@@ -68,6 +67,7 @@ namespace PrivateSchoolProject
                 case "29": controllerAssignment.GetAssignmentsCount(); break;
                 case "30": controllerAssignment.GetAssignmentsByCourse(); break;
                 case "31": controllerCourse.CreateCourse(); break;
+
                 default: View.Error(); break;
             }
         }

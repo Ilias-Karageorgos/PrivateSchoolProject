@@ -1,4 +1,5 @@
 ﻿using PrivateSchoolProject.RepositoryService;
+using PrivateSchoolProject.Views.Courses;
 using PrivateSchoolProject.Views.Trainers;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace PrivateSchoolProject.Controllers
                 Console.WriteLine(error.Message);
             }
 
-            ViewTrainer.Trainers(trainers, $"{"",15}All Trainers\n");
+            ViewTrainer.GetTrainers(trainers, $"{"",15}All Trainers\n");
         }
         public void GetFilteredTrainersByFirstOrLastName()
         {
@@ -56,6 +57,28 @@ namespace PrivateSchoolProject.Controllers
             }
 
             ViewTrainer.TrainersCount(trainers, $"{"",25}Trainers Count\n");
+        }
+
+
+
+        public void TrainersOrderedBy(string prop)
+        {
+            List<Trainer> trainers = new List<Trainer>();
+
+            try
+            {
+                trainers = trainerService.GetTrainers();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
+            switch (prop)
+            {
+                case "LastName": ViewTrainer.GetTrainers(trainers.OrderBy(x => x.LastName).ToList(), $"{"",25}Trainers Ordered by Lastname\n"); break;
+                case "FirstName": ViewTrainer.GetTrainers(trainers.OrderBy(x => x.FirstName).ToList(), $"{"",25}Trainers Ordered by Firstname\n"); break;
+            }
         }
     }
 }

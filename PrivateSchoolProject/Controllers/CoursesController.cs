@@ -12,7 +12,6 @@ namespace PrivateSchoolProject.Controllers
     {
         CourseService courseService = new CourseService();
 
-
         public void ReadCourses()
         {
             List<Course> courses = new List<Course>();
@@ -118,7 +117,28 @@ namespace PrivateSchoolProject.Controllers
 
             ViewCourse.CoursesCount(courses, $"{"",25}Courses Count\n");
         }
+        public void CoursesOrderedBy(string prop)
+        {
+            List<Course> courses = new List<Course>();
 
+            try
+            {
+                courses = courseService.GetCourses();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+
+            switch (prop)
+            {
+                case "Title": ViewCourse.GetCourses(courses.OrderBy(x => x.Title).ToList(), $"{"",25}Courses Ordered by Title\n"); break;
+                case "Type": ViewCourse.GetCourses(courses.OrderBy(x => x.Type).ToList(), $"{"",25}Courses Ordered by Type\n"); break;
+                case "Stream": ViewCourse.GetCourses(courses.OrderBy(x => x.Stream).ToList(), $"{"",25}Courses Ordered by Stream\n"); break;
+                case "StartDate": ViewCourse.GetCourses(courses.OrderBy(x => x.StartDate).ToList(), $"{"",25}Courses Ordered by StardDate\n"); break;
+                case "EndDate": ViewCourse.GetCourses(courses.OrderBy(x => x.EndDate).ToList(), $"{"",25}Courses Ordered by EndDate\n"); break;
+            }
+        }
 
 
         public void CreateCourse()
@@ -129,7 +149,5 @@ namespace PrivateSchoolProject.Controllers
 
             ReadCourses();
         }
-
-
     }
 }

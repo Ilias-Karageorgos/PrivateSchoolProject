@@ -8,7 +8,7 @@ namespace PrivateSchoolProject.Views.Students
 {
     internal class ViewStudent
     {        
-        public static void Students(List<Student> students, string message)
+        public static void GetStudents(List<Student> students, string message)
         {
             View.PrintColoredMessage(message);
             Console.WriteLine($"{"Id",-10}{"Firstname",-25}{"Lastname",-20}{"Date of Birth",-20}{"Tuition Fees",-10}");
@@ -38,7 +38,7 @@ namespace PrivateSchoolProject.Views.Students
             }
             else
             {
-                ViewStudent.Students(filteredStudents, message);
+                ViewStudent.GetStudents(filteredStudents, message);
             }
         }
         public static void StudentsWithTwoOrMoreCourses(List<Student> students, string message)

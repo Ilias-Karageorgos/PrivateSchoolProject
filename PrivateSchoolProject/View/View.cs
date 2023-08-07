@@ -6,7 +6,7 @@ using System.Linq;
 namespace PrivateSchoolProject
 {
 
-    public class View //class view gia na ftiaksoume tis methoudous Print pou tha kanei get o xristis apo to switch
+    public class View
     {
         public static void Menu()
         {
