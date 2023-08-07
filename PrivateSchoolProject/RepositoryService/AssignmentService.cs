@@ -14,5 +14,14 @@ namespace PrivateSchoolProject.RepositoryService
         {
             return db.Assignments;
         }
+
+        public void CreateAssignment(Assignment createdAssignment)
+        {
+            int lastAssignmentId = db.Assignments[db.Assignments.Count - 1].Id;
+
+            createdAssignment.Id = lastAssignmentId + 1;
+
+            db.Assignments.Add(createdAssignment);
+        }
     }
 }

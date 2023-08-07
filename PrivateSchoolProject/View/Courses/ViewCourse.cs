@@ -103,24 +103,24 @@ namespace PrivateSchoolProject.Views.Courses
 
         public static Course CreateCourse() //na kano validations
         {
-            Console.WriteLine("Give Course Title");
+            Console.WriteLine("Give Course's Title");
             string courseTitle = Console.ReadLine();
 
-            Console.WriteLine("Give Course Stream");
+            Console.WriteLine("Give Course's Stream");
             string courseStream = Console.ReadLine();
 
-            Console.WriteLine("Give Course Start Date ex. 2022/10/25");
+            Console.WriteLine("Give Course's Start Date (ex. 2023-10-22)");
             string inputStartD = Console.ReadLine();
             DateTime startDate;
             DateTime.TryParse(inputStartD, out startDate);
 
-            Console.WriteLine("Give Course End Date ex 2022/12/20");
+            Console.WriteLine("Give Course's End Date (ex. 2023-10-22)");
             string inputEndD = Console.ReadLine();
             DateTime endDate;
             DateTime.TryParse(inputEndD, out endDate);
 
             //get Type Enum 
-            Console.WriteLine("Select Course Type");
+            Console.WriteLine("Select Course's Type");
             string[] types = Enum.GetNames(typeof(CourseType)); //exoume ena pinaka me ola ta onoma apo types (dld part kai fulltime)
 
             for (int i = 0; i < types.Length; i++)

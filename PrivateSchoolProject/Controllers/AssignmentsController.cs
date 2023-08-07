@@ -70,5 +70,14 @@ namespace PrivateSchoolProject.Controllers
             }
             ViewAssignment.AssignmentsByCourse(assignments, $"{"",20}Assignments by Course\n");
         }
+
+        public void CreateAssignmentController()
+        {
+            Assignment createdAssignment = ViewAssignment.CreateAssignment();
+
+            assignmentService.CreateAssignment(createdAssignment);
+
+            GetAssignments();
+        }
     }
 }

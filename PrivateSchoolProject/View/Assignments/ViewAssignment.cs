@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,37 @@ namespace PrivateSchoolProject.Views.Assignments
                 Console.WriteLine($"{item.Key.Title,20} = {item.Count()}");
             }
             Console.ResetColor();
+        }
+
+        public static Assignment CreateAssignment()
+        {
+            Console.WriteLine("Give Assignment's Title");
+            string assignmentTitle = Console.ReadLine();
+
+            Console.WriteLine("Give Assignment's Description");
+            string assignmentDescription = Console.ReadLine();
+
+            Console.WriteLine("Give Assignment's Oral Mark");
+            int assignmentOralMark = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Give Assignment's Total Mark");
+            int assignmentTotalMark = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Give Assignment's SubDateTime (ex. 2023-10-22)");
+            string inputSubDate = Console.ReadLine();
+            DateTime subDate;
+            DateTime.TryParse(inputSubDate, out subDate);
+
+            Assignment createdAssignment = new Assignment()
+            {
+                Title = assignmentTitle,
+                Description = assignmentDescription,
+                OralMark = assignmentOralMark,
+                TotalMark = assignmentTotalMark,
+                SubDateTime = subDate
+            };
+
+            return createdAssignment;
         }
     }
 }
