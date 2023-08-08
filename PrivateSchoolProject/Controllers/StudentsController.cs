@@ -112,7 +112,7 @@ namespace PrivateSchoolProject.Controllers
         }
 
 
-        public void CreateStudentController()
+        public void CreateStudent()
         {
             Student createdStudent = ViewStudent.CreateStudent();
 

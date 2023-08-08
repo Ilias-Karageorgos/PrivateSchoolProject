@@ -78,7 +78,7 @@ namespace PrivateSchoolProject.Controllers
             }
         }
 
-        public void CreateTrainerController()
+        public void CreateTrainer()
         {
             Trainer createdTrainer = ViewTrainer.CreateTrainer();
 

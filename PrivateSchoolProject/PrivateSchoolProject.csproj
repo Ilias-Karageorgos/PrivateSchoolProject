@@ -60,6 +60,7 @@
     <Compile Include="RepositoryService\CourseService.cs" />
     <Compile Include="RepositoryService\StudentService.cs" />
     <Compile Include="RepositoryService\TrainerService.cs" />
+    <Compile Include="Validation\Validation.cs" />
     <Compile Include="View\Assignments\ViewAssignment.cs" />
     <Compile Include="View\Courses\ViewCourse.cs" />
     <Compile Include="View\Students\ViewStudent.cs" />
