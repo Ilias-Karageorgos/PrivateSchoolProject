@@ -83,25 +83,64 @@ namespace PrivateSchoolProject.Views.Students
 
         public static Student CreateStudent()
         {
-            Console.WriteLine("Give Student's Firstname");
-            string studentFirstname = Console.ReadLine();
-
-            Console.WriteLine("Give Student's Lastname");
-            string studentLastname = Console.ReadLine();
-
-            Console.WriteLine("Give Student's TuitionFees (number)");
-            int tuitionFees = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Give Student's Date Of Birth (ex. 1999-05-26)");
-            string inputDoB = Console.ReadLine();
+            string studentFirstname;
+            string studentLastname;
             DateTime doB;
-            DateTime.TryParse(inputDoB, out doB);
+            string inputTuitionFees;
+
+            //Firstname
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Student's Firstname");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Firstname must be only letters (more that 2)");
+                Console.ResetColor();
+                studentFirstname = Console.ReadLine();
+            } while (!Validation.Validation.CheckInputString(studentFirstname));
+
+            //Lastname
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Student's Lastname");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Firstname must be only letters (more that 2)");
+                Console.ResetColor();
+                studentLastname = Console.ReadLine();
+            } while (!Validation.Validation.CheckInputString(studentLastname));
+
+            //Tuition Fees
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Student's TuitionFees (number)");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Must be a number between 0 and 10.000");
+                Console.ResetColor();
+                inputTuitionFees = Console.ReadLine();
+            } while (Validation.Validation.CheckTuitionFees(inputTuitionFees));       
+
+            //Date of Birth
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Student's Date Of Birth");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ex. 1999-05-26 (use . or / or - or space in between)");
+                Console.WriteLine("Age must be at least 18 years old");
+                Console.ResetColor();
+                string inputDoB = Console.ReadLine();                
+                DateTime.TryParse(inputDoB, out doB);
+
+            } while (Validation.Validation.CheckDateOfBirth(doB));
+            
 
             Student createdStudent = new Student()
             {
                 FirstName = studentFirstname,
                 LastName = studentLastname,
-                TuitionFees = tuitionFees,
+                TuitionFees = Convert.ToInt32(inputTuitionFees),
                 DateOfBirth = doB
             };
 
