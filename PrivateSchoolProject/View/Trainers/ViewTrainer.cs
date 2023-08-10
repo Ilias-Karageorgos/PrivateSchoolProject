@@ -50,11 +50,31 @@ namespace PrivateSchoolProject.Views.Trainers
 
         public static Trainer CreateTrainer()
         {
-            Console.WriteLine("Give Trainer's Firstname");
-            string trainerFirstname = Console.ReadLine();
+            string trainerFirstname;
+            string trainerLastname;
 
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Trainer's Firstname");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Firstname must be only letters (more that 2)");
+                Console.ResetColor();
+                trainerFirstname = Console.ReadLine();
+            } while (!Validation.Validation.CheckInputString(trainerFirstname));
+
+
+
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Give Trainer's Lastname");
-            string trainerLastname = Console.ReadLine();
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Lastname must be only letters (more that 2)");
+                Console.ResetColor();
+                trainerLastname = Console.ReadLine();
+            } while (!Validation.Validation.CheckInputString(trainerLastname));
+
 
             Trainer createdTrainer = new Trainer()
             {
@@ -63,6 +83,6 @@ namespace PrivateSchoolProject.Views.Trainers
             };
 
             return createdTrainer;
-        }
+        }        
     }
 }

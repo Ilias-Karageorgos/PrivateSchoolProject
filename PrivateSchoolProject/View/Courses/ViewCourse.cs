@@ -103,21 +103,58 @@ namespace PrivateSchoolProject.Views.Courses
 
         public static Course CreateCourse() //na kano validations
         {
+            string courseTitle;
+            string courseStream;
+            DateTime startDate;
+            string inputStartD;
+            DateTime endDate;
+            string inputEndD;
+
+            //Course Title
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Give Course's Title");
-            string courseTitle = Console.ReadLine();
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Course Title must be only letters (more that 2)");
+                Console.ResetColor();
+                courseTitle = Console.ReadLine();
+            } while (!Validation.Validation.CheckInputString(courseTitle));
+
+
 
             Console.WriteLine("Give Course's Stream");
-            string courseStream = Console.ReadLine();
+            courseStream = Console.ReadLine();
 
-            Console.WriteLine("Give Course's Start Date (ex. 2023-10-22)");
-            string inputStartD = Console.ReadLine();
-            DateTime startDate;
-            DateTime.TryParse(inputStartD, out startDate);
 
-            Console.WriteLine("Give Course's End Date (ex. 2023-10-22)");
-            string inputEndD = Console.ReadLine();
-            DateTime endDate;
-            DateTime.TryParse(inputEndD, out endDate);
+            //StartDate                                   
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Course's Start Date");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ex. 2024-05-26 (use . or / or - or space in between)");
+                Console.WriteLine("Start Date must a date AFTER TODAY'S DATE");
+                Console.ResetColor();
+                inputStartD = Console.ReadLine();
+                DateTime.TryParse(inputStartD, out startDate);
+
+            } while (Validation.Validation.CheckStartDate(startDate));
+
+            //EndDate                                   
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Course's End Date");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ex. 2024-05-26 (use . or / or - or space in between)");
+                Console.WriteLine("End Date must a date AFTER START DATE");
+                Console.ResetColor();
+                inputEndD = Console.ReadLine();
+                DateTime.TryParse(inputEndD, out endDate);
+
+            } while (!Validation.Validation.CheckEndDate(startDate,endDate));
+
 
             //get Type Enum 
             Console.WriteLine("Select Course's Type");
