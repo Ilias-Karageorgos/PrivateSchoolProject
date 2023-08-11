@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,29 +60,72 @@ namespace PrivateSchoolProject.Views.Assignments
 
         public static Assignment CreateAssignment()
         {
-            Console.WriteLine("Give Assignment's Title");
-            string assignmentTitle = Console.ReadLine();
+            string assignmentTitle;
+            string inputSubDate;
+            DateTime subDate;
+            string inputAssignmentOralMark;
+            string inputAssignmentTotalMark;
 
-            Console.WriteLine("Give Assignment's Description");
+            //Title
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Assignment's Title");
+
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Course Title must be only letters (more that 2)");
+                Console.ResetColor();
+                assignmentTitle = Console.ReadLine();                
+            } while (!Validation.Validation.CheckInputString(assignmentTitle));
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Assignment's Description (Optional)");
+            Console.ResetColor();
             string assignmentDescription = Console.ReadLine();
 
+            //Oral Mark
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Give Assignment's Oral Mark");
-            int assignmentOralMark = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Oral Mark must be between 0 and 100");
+                Console.ResetColor();
+                inputAssignmentOralMark = Console.ReadLine();
+            } while (Validation.Validation.CheckOralMark(inputAssignmentOralMark));
 
+            //Total Mark
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Give Assignment's Total Mark");
-            int assignmentTotalMark = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Total Mark must be between 0 and 100 and greater than Oral Mark");
+                Console.ResetColor();
+                inputAssignmentTotalMark = Console.ReadLine();
+            } while (Validation.Validation.CheckTotalMark(inputAssignmentTotalMark, Convert.ToInt32(inputAssignmentOralMark)));
+                        
 
-            Console.WriteLine("Give Assignment's SubDateTime (ex. 2023-10-22)");
-            string inputSubDate = Console.ReadLine();
-            DateTime subDate;
-            DateTime.TryParse(inputSubDate, out subDate);
+            //Subdate
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Give Assignment's SubDateTime");
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ex. 2024-05-26 (use . or / or - or space in between)");
+                Console.WriteLine("Subdate must a date AFTER TODAY'S DATE");
+                Console.ResetColor();
+                inputSubDate = Console.ReadLine();                
+                DateTime.TryParse(inputSubDate, out subDate);
+            } while (Validation.Validation.CheckStartDate(subDate));
+            
 
             Assignment createdAssignment = new Assignment()
             {
                 Title = assignmentTitle,
                 Description = assignmentDescription,
-                OralMark = assignmentOralMark,
-                TotalMark = assignmentTotalMark,
+                OralMark = Convert.ToInt32(inputAssignmentOralMark),
+                TotalMark = Convert.ToInt32(inputAssignmentTotalMark),
                 SubDateTime = subDate
             };
 

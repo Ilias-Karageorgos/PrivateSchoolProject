@@ -10,9 +10,9 @@ namespace PrivateSchoolProject.Validation
 {
     internal class Validation
     {
-        internal static bool CheckInputString(string lastName) 
+        internal static bool CheckInputString(string inputString) 
         {
-            return (lastName.Any(x => char.IsDigit(x) || char.IsSymbol(x) || x == '!') || string.IsNullOrWhiteSpace(lastName)) || lastName.Length < 3  ? false : true;
+            return (inputString.Any(x => char.IsDigit(x) || char.IsSymbol(x) || x == '!') || string.IsNullOrWhiteSpace(inputString)) || inputString.Length < 3  ? false : true;
         }
         internal static bool CheckDateOfBirth(DateTime dateOfBirth)
         {
@@ -42,6 +42,20 @@ namespace PrivateSchoolProject.Validation
         internal static bool CheckStream(string courseStream)
         {
             return Regex.IsMatch(courseStream, "^(cb|CB)-[8-9]$|^(cb|CB)-1([0-2])$");
+        }
+      
+        internal static bool CheckOralMark(string inputMark)
+        {
+            int inputMarkNumber;
+            bool result = int.TryParse(inputMark, out inputMarkNumber);
+            return inputMarkNumber > 100 || inputMarkNumber < 0 || result == false;
+        }
+
+        internal static bool CheckTotalMark(string inputTotalMark, int inputOralMark)
+        {
+            int inputMarkNumber;
+            bool result = int.TryParse(inputTotalMark, out inputMarkNumber);
+            return inputMarkNumber > 100 || inputMarkNumber < inputOralMark || result == false;
         }
     }
 }
