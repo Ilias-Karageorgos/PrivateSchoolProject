@@ -43,6 +43,7 @@ namespace PrivateSchoolProject.Validation
         {
             return Regex.IsMatch(courseStream, "^(cb|CB)-[8-9]$|^(cb|CB)-1([0-2])$");
         }
+      
         internal static bool CheckOralMark(string inputMark)
         {
             int inputMarkNumber;
