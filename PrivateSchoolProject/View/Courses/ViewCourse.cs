@@ -111,6 +111,7 @@ namespace PrivateSchoolProject.Views.Courses
             string inputEndD;
             string typeChoice;
 
+
             //Course Title
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Give Course's Title");
@@ -125,6 +126,7 @@ namespace PrivateSchoolProject.Views.Courses
             //Stream
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Give Course's Stream");
+
             do
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -162,7 +164,6 @@ namespace PrivateSchoolProject.Views.Courses
                 DateTime.TryParse(inputEndD, out endDate);
 
             } while (!Validation.Validation.CheckEndDate(startDate,endDate));
-
 
             //get Type Enum 
             Console.ForegroundColor = ConsoleColor.Blue;
