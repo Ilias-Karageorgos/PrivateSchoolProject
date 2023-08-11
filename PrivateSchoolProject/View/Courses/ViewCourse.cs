@@ -109,6 +109,7 @@ namespace PrivateSchoolProject.Views.Courses
             string inputStartD;
             DateTime endDate;
             string inputEndD;
+            string typeChoice;
 
             //Course Title
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -121,11 +122,18 @@ namespace PrivateSchoolProject.Views.Courses
                 courseTitle = Console.ReadLine();
             } while (!Validation.Validation.CheckInputString(courseTitle));
 
-
-
+            //Stream
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Give Course's Stream");
-            courseStream = Console.ReadLine();
-
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Stream must be CB-8 to CB-12, at this format");
+                Console.ResetColor();
+                Console.WriteLine("ex. CB-8");
+                courseStream = Console.ReadLine();
+            } while (!Validation.Validation.CheckStream(courseStream));
+            
 
             //StartDate                                   
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -157,15 +165,23 @@ namespace PrivateSchoolProject.Views.Courses
 
 
             //get Type Enum 
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Select Course's Type");
             string[] types = Enum.GetNames(typeof(CourseType)); //exoume ena pinaka me ola ta onoma apo types (dld part kai fulltime)
 
             for (int i = 0; i < types.Length; i++)
             {
                 Console.WriteLine($"{i,-4}-{types[i]}");
-            }
-            int choice = Convert.ToInt32(Console.ReadLine());
-            CourseType courseType = (CourseType)choice;  //edo pairno auto p edose o xristis
+            }       
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please Choose 0 or 1");
+                Console.ResetColor();
+                typeChoice = Console.ReadLine();
+            } while (!Validation.Validation.CheckType(typeChoice));
+            CourseType courseType = (CourseType)Convert.ToInt32(typeChoice);  //edo pairno auto p edose o xristis gia na metatrepso to int se coursetype
+
 
             Course createdCourse = new Course()
             {
@@ -175,7 +191,6 @@ namespace PrivateSchoolProject.Views.Courses
                 EndDate = endDate,
                 Type = courseType
             };
-
             return createdCourse;
         }
     }
